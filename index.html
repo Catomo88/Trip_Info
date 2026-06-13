@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가족 여행 대시보드</title>
+<meta property="og:title" content="가족 여행 대시보드">
+<meta property="og:description" content="다세대 가족 여행 정보 모음 — 후쿠오카·오사카·로마">
+<meta property="og:type" content="website">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
+    background: #f5f7fa;
+    color: #1a202c;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  header.hero {
+    background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+    color: white;
+    padding: 40px 32px;
+    border-radius: 16px;
+    margin-bottom: 28px;
+    box-shadow: 0 8px 24px rgba(44, 82, 130, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::before {
+    content: "✈️";
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 140px;
+    opacity: 0.08;
+    transform: rotate(-20deg);
+  }
+  header.hero h1 { font-size: 30px; margin-bottom: 10px; position: relative; }
+  header.hero p { opacity: 0.92; font-size: 15px; position: relative; }
+  header.hero .family {
+    margin-top: 18px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  header.hero .family span {
+    background: rgba(255,255,255,0.18);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Stats */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .stat {
+    background: white;
+    padding: 18px 16px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-left: 4px solid #2c5282;
+  }
+  .stat .num {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a365d;
+    line-height: 1.1;
+  }
+  .stat .label {
+    font-size: 12.5px;
+    color: #718096;
+    margin-top: 4px;
+  }
+  .stat.highlight { border-left-color: #c53030; }
+  .stat.highlight .num { color: #c53030; }
+
+  /* Trip section */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 30px 0 14px;
+    padding: 0 4px;
+  }
+  .section-header h2 {
+    font-size: 18px;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-header .meta {
+    font-size: 12px;
+    color: #a0aec0;
+  }
+
+  .trip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+
+  .trip-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    border-top: 4px solid;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+  }
+  .trip-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  .trip-card.is-upcoming { border-top-color: #c53030; }
+  .trip-card.is-booked   { border-top-color: #48bb78; }
+  .trip-card.is-past     { border-top-color: #4299e1; }
+  .trip-card.is-locked   { border-top-color: #cbd5e0; opacity: 0.78; cursor: default; }
+  .trip-card.is-locked:hover { transform: none; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+
+  .trip-card .flag {
+    font-size: 40px;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+  .trip-card h3 {
+    font-size: 19px;
+    margin-bottom: 4px;
+    color: #1a202c;
+  }
+  .trip-card .city {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 14px;
+  }
+  .trip-card .dates {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: #2d3748;
+    margin-bottom: 10px;
+  }
+  .trip-card .dates::before {
+    content: "📅";
+    font-size: 14px;
+  }
+  .trip-card .summary {
+    font-size: 13px;
+    color: #4a5568;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .trip-card .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid #edf2f7;
+  }
+  .status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .status-upcoming { background: #fed7d7; color: #c53030; }
+  .status-booked   { background: #c6f6d5; color: #22543d; }
+  .status-past     { background: #bee3f8; color: #2c5282; }
+  .status-coming   { background: #edf2f7; color: #718096; }
+
+  .arrow {
+    color: #cbd5e0;
+    font-size: 18px;
+    transition: transform 0.15s;
+  }
+  .trip-card:hover .arrow { color: #c53030; transform: translateX(3px); }
+  .trip-card.is-locked .arrow { display: none; }
+
+  .countdown {
+    font-size: 12px;
+    color: #c53030;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  /* Family profile section */
+  .profile-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-top: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .profile-card h3 {
+    font-size: 16px;
+    color: #2d3748;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .profile-item {
+    background: #f7fafc;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .profile-item b { color: #2d3748; display: block; margin-bottom: 4px; }
+  .profile-item span { color: #4a5568; }
+
+  footer {
+    text-align: center;
+    margin-top: 36px;
+    padding: 20px;
+    font-size: 12px;
+    color: #a0aec0;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 12px; }
+    header.hero { padding: 28px 22px; }
+    header.hero h1 { font-size: 24px; }
+    .trip-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <h1>🌍 가족 여행 대시보드</h1>
+  <p>부모님 + 부부 + 자녀 2명 · 다세대 가족 여행 모음</p>
+  <div class="family">
+    <span>👴 아버지</span>
+    <span>👵 어머니</span>
+    <span>👨 본인</span>
+    <span>👩 배우자</span>
+    <span>👧 8세 딸</span>
+    <span>👦 5세 아들</span>
+  </div>
+</header>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="num">3</div>
+    <div class="label">방문지</div>
+  </div>
+  <div class="stat highlight">
+    <div class="num">2</div>
+    <div class="label">예정 여행</div>
+  </div>
+  <div class="stat">
+    <div class="num">1</div>
+    <div class="label">예약 확정</div>
+  </div>
+  <div class="stat">
+    <div class="num">15</div>
+    <div class="label">검토 숙소 (누적)</div>
+  </div>
+</div>
+
+<!-- 예정/진행 중 여행 -->
+<div class="section-header">
+  <h2>🛫 예정 / 진행 중</h2>
+  <div class="meta">출발일 임박순</div>
+</div>
+<div class="trip-grid">
+
+  <a class="trip-card is-booked" href="#" onclick="alert('오사카 페이지 준비 중'); return false;">
+    <div class="flag">🇯🇵</div>
+    <h3>오사카</h3>
+    <div class="city">우메다 · 그랜드프론트</div>
+    <div class="dates">2026.08.01 ~ 08.08 (7박)</div>
+    <div class="summary">8세 딸 OYIS 영어캠프 기간. 인터콘티넨탈 오사카 레지던스 (1BR × 2채) 예약 확정.</div>
+    <div class="footer-row">
+      <div>
+        <span class="status-badge status-booked">예약 확정</span>
+        <div class="countdown">D-49 (계산 기준 2026.06.13)</div>
+      </div>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+
+  <a class="trip-card is-upcoming" href="./rome/">
+    <div class="flag">🇮🇹</div>
+    <h3>로마</h3>
+    <div class="city">이탈리아 도심</div>
+    <div class="dates">2026.09.18 ~ 09.25 (7박)</div>
+    <div class="summary">6인 가족 도심 관광. 럭셔리 호텔 6곳 후보 검토 중. 자차 vs 도보·메트로 결정 대기.</div>
+    <div class="footer-row">
+      <div>
+        <span class="status-badge status-upcoming">호텔 검토</span>
+        <div class="countdown">D-97</div>
+      </div>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- 과거 / 누적 학습 -->
+<div class="section-header">
+  <h2>🏯 과거 이용 · 학습 누적</h2>
+  <div class="meta">호텔별 노트 보존</div>
+</div>
+<div class="trip-grid">
+
+  <a class="trip-card is-past" href="#" onclick="alert('후쿠오카 페이지 준비 중'); return false;">
+    <div class="flag">🇯🇵</div>
+    <h3>후쿠오카</h3>
+    <div class="city">힐튼 씨호크 · Japanese Suite</div>
+    <div class="dates">자주 이용 · 호수별 학습 누적</div>
+    <div class="summary">파노라믹 와시츠 스위트 / 602호 학습 / 611호 조건부 / 룸 카테고리 평수 편차 분석.</div>
+    <div class="footer-row">
+      <div><span class="status-badge status-past">과거 이용</span></div>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+
+  <a class="trip-card is-past" href="#" onclick="alert('오사카 힐튼 페이지 준비 중'); return false;">
+    <div class="flag">🇯🇵</div>
+    <h3>오사카 (힐튼)</h3>
+    <div class="city">우메다 · 힐튼 오사카</div>
+    <div class="dates">단골 이용</div>
+    <div class="summary">위치·서비스 우수. 사우나·대욕장 시설 빈약 → 다음엔 "힐튼 오사카 이상" 시설 기준.</div>
+    <div class="footer-row">
+      <div><span class="status-badge status-past">기준점</span></div>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- Family profile -->
+<div class="profile-card">
+  <h3>👨‍👩‍👧‍👦 가족 여행 프로파일 — 핵심 기준</h3>
+  <div class="profile-grid">
+    <div class="profile-item">
+      <b>절대 조건</b>
+      <span>엘리베이터 필수 · 금연 객실 · 객실 내 화장실</span>
+    </div>
+    <div class="profile-item">
+      <b>부모님 우선</b>
+      <span>뷰 · 엘리베이터 동선 · 사우나·대욕장 · 조식 퀄리티</span>
+    </div>
+    <div class="profile-item">
+      <b>아이 정책</b>
+      <span>풀·욕탕 입장 연령 · 식당 동반 가능성 (특히 5세)</span>
+    </div>
+    <div class="profile-item">
+      <b>체인 충성도</b>
+      <span>Hilton Honors 단골 · IHG 활용 가능</span>
+    </div>
+    <div class="profile-item">
+      <b>분리 구성</b>
+      <span>부모님 룸 + 본인 부부+아이 룸 (2그룹 분리)</span>
+    </div>
+    <div class="profile-item">
+      <b>학습 인사이트</b>
+      <span>레지던스: 1BR×N vs 2BR×1 가격 역전 흔함 → 둘 다 비교</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  마지막 업데이트: 2026.06.13 · 가족 여행 정보 아카이브
+</footer>
+
+</div>
+
+<script>
+  // D-day 자동 계산 (상세 페이지 만들 때 활용 가능)
+  function dDay(targetDate) {
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const target = new Date(targetDate);
+    const diff = Math.floor((target - today) / (1000 * 60 * 60 * 24));
+    return diff;
+  }
+  // 페이지가 변경될 때마다 자동 업데이트하려면 아래 주석 해제
+  // const osakaD = dDay('2026-08-01');
+  // const romeD = dDay('2026-09-18');
+  // console.log({osakaD, romeD});
+</script>
+
+</body>
+</html>
