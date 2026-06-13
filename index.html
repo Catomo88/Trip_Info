@@ -133,6 +133,18 @@
   .trip-card.is-locked   { border-top-color: #cbd5e0; opacity: 0.78; cursor: default; }
   .trip-card.is-locked:hover { transform: none; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
 
+  /* 과거 이용 · 컴팩트 카드 (기록·학습용) */
+  .trip-grid.compact { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .trip-card.compact { padding: 14px 16px; }
+  .trip-card.compact .flag { font-size: 24px; margin-bottom: 6px; }
+  .trip-card.compact h3 { font-size: 15px; }
+  .trip-card.compact .city { font-size: 12px; margin-bottom: 8px; }
+  .trip-card.compact .dates { font-size: 12px; margin-bottom: 6px; }
+  .trip-card.compact .dates::before { font-size: 12px; }
+  .trip-card.compact .summary { font-size: 12px; line-height: 1.45; margin-bottom: 8px; }
+  .trip-card.compact .footer-row { padding-top: 8px; }
+  .trip-card.compact .status-badge { font-size: 10.5px; padding: 3px 8px; }
+
   .trip-card .flag {
     font-size: 40px;
     margin-bottom: 10px;
@@ -326,15 +338,15 @@
 <!-- 과거 / 누적 학습 -->
 <div class="section-header">
   <h2>🏯 과거 이용 · 학습 누적</h2>
-  <div class="meta">호텔별 노트 보존</div>
+  <div class="meta">기록·학습용 (간략)</div>
 </div>
-<div class="trip-grid">
+<div class="trip-grid compact">
 
-  <a class="trip-card is-past" href="#" onclick="alert('후쿠오카 페이지 준비 중'); return false;">
+  <a class="trip-card is-past compact" href="#" onclick="alert('후쿠오카 페이지 준비 중'); return false;">
     <div class="flag">🇯🇵</div>
     <h3>후쿠오카</h3>
     <div class="city">힐튼 씨호크 · Japanese Suite</div>
-    <div class="dates">자주 이용 · 호수별 학습 누적</div>
+    <div class="dates">자주 이용 · 최근 2026.05 방문</div>
     <div class="summary">파노라믹 와시츠 스위트 / 602호 학습 / 611호 조건부 / 룸 카테고리 평수 편차 분석.</div>
     <div class="footer-row">
       <div><span class="status-badge status-past">과거 이용</span></div>
@@ -342,7 +354,7 @@
     </div>
   </a>
 
-  <a class="trip-card is-past" href="#" onclick="alert('오사카 힐튼 페이지 준비 중'); return false;">
+  <a class="trip-card is-past compact" href="#" onclick="alert('오사카 힐튼 페이지 준비 중'); return false;">
     <div class="flag">🇯🇵</div>
     <h3>오사카 (힐튼)</h3>
     <div class="city">우메다 · 힐튼 오사카</div>
