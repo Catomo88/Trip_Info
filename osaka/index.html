@@ -18,27 +18,14 @@
   }
   .container { max-width: 1080px; margin: 0 auto; }
 
-  /* breadcrumb */
   .breadcrumb {
-    background: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
+    background: white; padding: 12px 18px; border-radius: 10px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px; font-size: 13px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .breadcrumb a {
-    color: #0e7490;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    transition: background 0.15s;
+    color: #0e7490; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 6px; transition: background 0.15s;
   }
   .breadcrumb a:hover { background: #ecfeff; }
   .breadcrumb .sep { color: #cbd5e0; }
@@ -46,105 +33,58 @@
 
   header {
     background: linear-gradient(135deg, #0e7490 0%, #155e75 100%);
-    color: white;
-    padding: 30px 28px;
-    border-radius: 14px;
-    margin-bottom: 22px;
+    color: white; padding: 28px 26px; border-radius: 14px; margin-bottom: 16px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
   }
-  header h1 { font-size: 25px; margin-bottom: 8px; }
-  header p { opacity: 0.92; font-size: 14px; }
-  header .meta {
-    margin-top: 14px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    font-size: 13px;
-  }
+  header h1 { font-size: 24px; margin-bottom: 8px; }
+  header p { opacity: 0.92; font-size: 13.5px; }
+  header .meta { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px; }
   header .meta span { background: rgba(255,255,255,0.18); padding: 4px 10px; border-radius: 6px; }
   header .dday {
-    margin-top: 12px;
-    display: inline-block;
-    background: rgba(255,255,255,0.92);
-    color: #155e75;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 5px 12px;
-    border-radius: 8px;
+    margin-top: 12px; display: inline-block; background: rgba(255,255,255,0.92);
+    color: #155e75; font-weight: 700; font-size: 13px; padding: 5px 12px; border-radius: 8px;
   }
 
+  /* 탭 네비 */
+  .tabs-nav {
+    background: white; border-radius: 12px; padding: 6px; display: flex; gap: 4px;
+    overflow-x: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    position: sticky; top: 0; z-index: 100; margin-bottom: 18px;
+  }
+  .tabs-nav::-webkit-scrollbar { height: 5px; }
+  .tabs-nav::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 3px; }
+  .tab-btn {
+    flex: 1 0 auto; min-width: 92px; background: transparent; border: 1px solid transparent;
+    border-radius: 8px; padding: 10px 12px; font-size: 13px; font-family: inherit; cursor: pointer;
+    color: #4a5568; text-align: center; transition: all 0.15s ease; white-space: nowrap;
+  }
+  .tab-btn:hover { background: #f0f9fb; color: #155e75; }
+  .tab-btn.active { background: #0e7490; color: white; font-weight: 600; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
   .section {
-    background: white;
-    border-radius: 12px;
-    padding: 22px;
-    margin-bottom: 18px;
+    background: white; border-radius: 12px; padding: 22px; margin-bottom: 18px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
   .section h2 {
-    font-size: 17px;
-    color: #155e75;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 2px solid #f0f5f7;
-    padding-bottom: 10px;
+    font-size: 17px; color: #155e75; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    border-bottom: 2px solid #f0f5f7; padding-bottom: 10px;
   }
 
-  /* overview grid */
-  .ov-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-  }
-  .ov-item {
-    background: #f7fafc;
-    border: 1px solid #edf2f7;
-    border-radius: 10px;
-    padding: 14px 16px;
-  }
+  .ov-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .ov-item { background: #f7fafc; border: 1px solid #edf2f7; border-radius: 10px; padding: 14px 16px; }
   .ov-item .label { font-size: 11px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
   .ov-item .val { font-size: 14px; color: #1a202c; font-weight: 600; }
   .ov-item .sub { font-size: 12px; color: #718096; font-weight: 400; margin-top: 3px; }
 
-  /* timeline */
   .tl-wrap { overflow-x: auto; padding-bottom: 6px; }
-  .tl {
-    min-width: 640px;
-    display: grid;
-    grid-template-columns: 150px repeat(10, 1fr);
-    gap: 4px;
-    align-items: center;
-  }
-  .tl .day-head {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: #4a5568;
-    padding: 6px 2px;
-    background: #f7fafc;
-    border-radius: 6px;
-  }
+  .tl { min-width: 640px; display: grid; grid-template-columns: 150px repeat(10, 1fr); gap: 4px; align-items: center; }
+  .tl .day-head { text-align: center; font-size: 12px; font-weight: 600; color: #4a5568; padding: 6px 2px; background: #f7fafc; border-radius: 6px; }
   .tl .day-head.weekend { color: #c53030; }
-  .tl .row-label {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: #2d3748;
-    padding-right: 8px;
-    line-height: 1.35;
-  }
+  .tl .row-label { font-size: 12.5px; font-weight: 600; color: #2d3748; padding-right: 8px; line-height: 1.35; }
   .tl .row-label .who { font-weight: 400; color: #718096; font-size: 11.5px; display: block; }
-  .tl .bar {
-    height: 30px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    color: white;
-    font-weight: 600;
-    white-space: nowrap;
-  }
+  .tl .bar { height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: white; font-weight: 600; white-space: nowrap; }
   .bar-a { background: #0e7490; }
   .bar-b { background: #b7791f; }
   .bar-camp { background: #6b46c1; }
@@ -154,69 +94,45 @@
   .legend .item { display: inline-flex; align-items: center; gap: 6px; }
   .legend .sw { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
 
-  /* generic table */
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #edf2f7; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #edf2f7; vertical-align: top; }
   th { background: #f7fafc; color: #4a5568; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; }
   td b { color: #1a202c; }
-  .tag {
-    display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 5px; font-weight: 600;
-  }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 5px; font-weight: 600; }
   .tag.paid { background: #c6f6d5; color: #22543d; }
   .tag.due { background: #feebc8; color: #7b341e; }
   .tag.tip { background: #bee3f8; color: #2a4365; }
   .tag.sugg { background: #e9d8fd; color: #44337a; }
 
-  /* day-by-day */
-  .day-card {
-    border: 1px solid #edf2f7;
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    background: #fafbfc;
+  /* 구글맵 길찾기 버튼 */
+  .map-btn {
+    display: inline-flex; align-items: center; gap: 6px; background: #0e7490; color: white;
+    text-decoration: none; font-size: 13px; font-weight: 600; padding: 9px 14px; border-radius: 9px;
+    transition: background 0.15s;
   }
-  .day-card .dc-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-  }
-  .day-card .dc-date {
-    font-size: 14px; font-weight: 700; color: #155e75;
-  }
+  .map-btn:hover { background: #155e75; }
+  .map-btn.alt { background: white; color: #0e7490; border: 1.5px solid #0e7490; }
+  .map-btn.alt:hover { background: #ecfeff; }
+  .map-btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+  .day-card { border: 1px solid #edf2f7; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; background: #fafbfc; }
+  .day-card .dc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .day-card .dc-date { font-size: 14px; font-weight: 700; color: #155e75; }
   .day-card .dc-wd { font-size: 12px; color: #718096; }
-  .day-card .dc-grp {
-    font-size: 11px; padding: 2px 8px; border-radius: 5px; font-weight: 600;
-  }
+  .day-card .dc-grp { font-size: 11px; padding: 2px 8px; border-radius: 5px; font-weight: 600; }
   .grp-all { background: #e6fffa; color: #234e52; }
   .grp-a { background: #e0f2f7; color: #0e5a6e; }
   .grp-b { background: #fefcbf; color: #744210; }
   .day-card ul { list-style: none; margin-top: 4px; }
-  .day-card ul li {
-    font-size: 13px; color: #4a5568; padding: 3px 0 3px 14px; position: relative; line-height: 1.5;
-  }
+  .day-card ul li { font-size: 13px; color: #4a5568; padding: 3px 0 3px 14px; position: relative; line-height: 1.5; }
   .day-card ul li::before { content: "•"; position: absolute; left: 2px; color: #0e7490; font-weight: 700; }
 
-  /* checklist */
   .check-list { list-style: none; }
-  .check-list li {
-    font-size: 13.5px; color: #2d3748; padding: 8px 0 8px 28px; position: relative; border-bottom: 1px solid #f0f5f7;
-  }
-  .check-list li::before {
-    content: "☐"; position: absolute; left: 4px; top: 7px; color: #0e7490; font-size: 15px;
-  }
+  .check-list li { font-size: 13.5px; color: #2d3748; padding: 8px 0 8px 28px; position: relative; border-bottom: 1px solid #f0f5f7; }
+  .check-list li::before { content: "☐"; position: absolute; left: 4px; top: 7px; color: #0e7490; font-size: 15px; }
   .check-list li:last-child { border-bottom: none; }
 
-  .note {
-    background: #fffaf0;
-    border-left: 4px solid #dd6b20;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #5c2c0e;
-    margin-top: 12px;
-  }
+  .note { background: #fffaf0; border-left: 4px solid #dd6b20; padding: 12px 16px; border-radius: 8px; font-size: 13px; color: #5c2c0e; margin-top: 12px; }
   .note b { color: #7b341e; }
 
   footer { text-align: center; margin-top: 26px; padding: 16px; font-size: 12px; color: #718096; }
@@ -224,7 +140,8 @@
   @media (max-width: 640px) {
     body { padding: 10px; }
     .section { padding: 16px; }
-    header h1 { font-size: 20px; }
+    header h1 { font-size: 19px; }
+    .map-btn { font-size: 12.5px; padding: 10px 14px; }
   }
 </style>
 </head>
@@ -248,416 +165,419 @@
   <div class="dday" id="dday">D-day 계산 중…</div>
 </header>
 
-<!-- 한눈에 보기 -->
-<div class="section">
-  <h2>📌 한눈에 보기</h2>
-  <div class="ov-grid">
-    <div class="ov-item">
-      <div class="label">기간</div>
-      <div class="val">8/1(토) ~ 8/10(월)</div>
-      <div class="sub">9박 10일</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">숙소</div>
-      <div class="val">인터콘티넨탈 오사카</div>
-      <div class="sub">그랜드프론트 · 우메다 직결</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">영어캠프 (첫째)</div>
-      <div class="val">OYIS 나카츠</div>
-      <div class="sub">8/3(월) ~ 8/7(금) 평일</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">이동수단</div>
-      <div class="val">전철 + 택시</div>
-      <div class="sub">렌트카 미사용 확정</div>
-    </div>
-  </div>
+<!-- 탭 네비 -->
+<div class="tabs-nav" id="tabs-nav">
+  <button class="tab-btn active" data-tab="t1">📋 개요</button>
+  <button class="tab-btn" data-tab="t2">🗓️ 일정</button>
+  <button class="tab-btn" data-tab="t3">🏨 숙소·항공</button>
+  <button class="tab-btn" data-tab="t4">🚕 교통·통학</button>
+  <button class="tab-btn" data-tab="t5">🍱 식사·쇼핑</button>
 </div>
 
-<!-- 인원·객실 타임라인 -->
-<div class="section">
-  <h2>🗓️ 인원 · 객실 타임라인</h2>
-  <div class="tl-wrap">
-    <div class="tl">
-      <!-- 헤더 행 -->
-      <div class="row-label">날짜</div>
-      <div class="day-head weekend">1<br>토</div>
-      <div class="day-head weekend">2<br>일</div>
-      <div class="day-head">3<br>월</div>
-      <div class="day-head">4<br>화</div>
-      <div class="day-head">5<br>수</div>
-      <div class="day-head">6<br>목</div>
-      <div class="day-head">7<br>금</div>
-      <div class="day-head weekend">8<br>토</div>
-      <div class="day-head weekend">9<br>일</div>
-      <div class="day-head">10<br>월</div>
+<!-- ===== 탭 1: 개요 ===== -->
+<div class="tab-panel active" id="t1">
 
-      <!-- 그룹 A: 본인+아내+둘째 (2 Single, 8/1~8/5) -->
-      <div class="row-label">본인 · 아내 · 둘째(5)<span class="who">2 Single 룸</span></div>
-      <div class="bar bar-a" style="grid-column: 2 / span 4;">체류 8/1 ~ 8/5</div>
-      <div class="spacer" style="grid-column: 6 / span 6;"></div>
-
-      <!-- 그룹 B: 조부모님+첫째 (1BR Residence, 8/1~8/10) -->
-      <div class="row-label">조부모님 · 첫째(8)<span class="who">1BR 레지던스</span></div>
-      <div class="bar bar-b" style="grid-column: 2 / span 9;">체류 8/1 ~ 8/10</div>
-
-      <!-- 캠프 -->
-      <div class="row-label">영어캠프 (첫째)<span class="who">OYIS 나카츠</span></div>
-      <div class="spacer" style="grid-column: 2 / span 2;"></div>
-      <div class="bar bar-camp" style="grid-column: 4 / span 5;">캠프 8/3 ~ 8/7</div>
-      <div class="spacer" style="grid-column: 9 / span 2;"></div>
+  <div class="section">
+    <h2>📌 한눈에 보기</h2>
+    <div class="ov-grid">
+      <div class="ov-item">
+        <div class="label">기간</div>
+        <div class="val">8/1(토) ~ 8/10(월)</div>
+        <div class="sub">9박 10일</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">숙소</div>
+        <div class="val">인터콘티넨탈 오사카</div>
+        <div class="sub">그랜드프론트 · 우메다 직결</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">영어캠프 (첫째)</div>
+        <div class="val">OYIS 나카츠</div>
+        <div class="sub">8/3(월) ~ 8/7(금) 평일</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">이동수단</div>
+        <div class="val">전철 + 택시</div>
+        <div class="sub">렌트카 미사용 확정</div>
+      </div>
     </div>
   </div>
-  <div class="legend">
-    <span class="item"><span class="sw" style="background:#0e7490;"></span> 본인·아내·둘째 (8/1~8/5)</span>
-    <span class="item"><span class="sw" style="background:#b7791f;"></span> 조부모님·첫째 (8/1~8/10)</span>
-    <span class="item"><span class="sw" style="background:#6b46c1;"></span> 영어캠프 (8/3~8/7)</span>
+
+  <div class="section">
+    <h2>🗓️ 인원 · 객실 타임라인</h2>
+    <div class="tl-wrap">
+      <div class="tl">
+        <div class="row-label">날짜</div>
+        <div class="day-head weekend">1<br>토</div>
+        <div class="day-head weekend">2<br>일</div>
+        <div class="day-head">3<br>월</div>
+        <div class="day-head">4<br>화</div>
+        <div class="day-head">5<br>수</div>
+        <div class="day-head">6<br>목</div>
+        <div class="day-head">7<br>금</div>
+        <div class="day-head weekend">8<br>토</div>
+        <div class="day-head weekend">9<br>일</div>
+        <div class="day-head">10<br>월</div>
+
+        <div class="row-label">본인 · 아내 · 둘째(5)<span class="who">2 Single 룸</span></div>
+        <div class="bar bar-a" style="grid-column: 2 / span 4;">체류 8/1 ~ 8/5</div>
+        <div class="spacer" style="grid-column: 6 / span 6;"></div>
+
+        <div class="row-label">조부모님 · 첫째(8)<span class="who">1BR 레지던스</span></div>
+        <div class="bar bar-b" style="grid-column: 2 / span 9;">체류 8/1 ~ 8/10</div>
+
+        <div class="row-label">영어캠프 (첫째)<span class="who">OYIS 나카츠</span></div>
+        <div class="spacer" style="grid-column: 2 / span 2;"></div>
+        <div class="bar bar-camp" style="grid-column: 4 / span 5;">캠프 8/3 ~ 8/7</div>
+        <div class="spacer" style="grid-column: 9 / span 2;"></div>
+      </div>
+    </div>
+    <div class="legend">
+      <span class="item"><span class="sw" style="background:#0e7490;"></span> 본인·아내·둘째 (8/1~8/5)</span>
+      <span class="item"><span class="sw" style="background:#b7791f;"></span> 조부모님·첫째 (8/1~8/10)</span>
+      <span class="item"><span class="sw" style="background:#6b46c1;"></span> 영어캠프 (8/3~8/7)</span>
+    </div>
+    <div class="note">
+      <b>인수인계 포인트:</b> 본인 부부가 <b>8/5(수) 출발</b>하므로, 그 전에 조부모님께 <b>나카츠 통학 동선·캠프 픽업 시간</b>을 넘겨야 함. 캠프 후반(8/6~8/7) 등하교 및 8/8~8/10 일정은 조부모님 + 첫째가 진행.
+    </div>
   </div>
-  <div class="note">
-    <b>인수인계 포인트:</b> 본인 부부가 <b>8/5(수) 출발</b>하므로, 그 전에 조부모님께 <b>나카츠 통학 동선·캠프 픽업 시간</b>을 넘겨야 함. 캠프 후반(8/6~8/7) 등하교 및 8/8~8/10 일정은 조부모님 + 첫째가 진행.
+
+  <div class="section">
+    <h2>✅ 준비 체크리스트 · 리마인더</h2>
+    <ul class="check-list">
+      <li><b>¥727,200 결제</b> (1BR 레지던스) — 6월 중, 정확한 마감일·취소정책 확인</li>
+      <li><b>콜밴/점보택시 사전 예약</b> 3건 — 8/1 도착, 8/5 출발, 8/10 출발</li>
+      <li><b>캠프 통학 인수인계</b> — 8/5 출발 전 조부모님께 동선·픽업시간 공유</li>
+      <li><b>엑스트라 베딩 문의</b> — 2 Single 룸 3인 사용(부부+5살)</li>
+      <li><b>타큐빈(짐 배송)</b> 검토 — 공항↔호텔 캐리어 부담 경감</li>
+      <li><b>OYIS 캠프 준비물·등하원 시간</b> 최종 확인</li>
+      <li><b>고층 시티뷰 객실 배정·인접 객실 요청</b> (8/1~8/5 두 룸 가까이)</li>
+    </ul>
   </div>
+
 </div>
 
-<!-- 항공편 -->
-<div class="section">
-  <h2>✈️ 항공편</h2>
-  <table>
-    <thead>
-      <tr><th>날짜</th><th>출발 시각</th><th>구간</th><th>탑승</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><b>8/1 (토)</b></td><td>09:35 출발</td><td>한국 → 간사이(KIX)</td><td>전원 6인</td></tr>
-      <tr><td><b>8/5 (수)</b></td><td>18:15 출발</td><td>간사이(KIX) → 한국</td><td>본인 · 아내 · 둘째</td></tr>
-      <tr><td><b>8/10 (월)</b></td><td>18:15 출발</td><td>간사이(KIX) → 한국</td><td>조부모님 · 첫째</td></tr>
-    </tbody>
-  </table>
-  <div class="note">
-    <b>도착(8/1):</b> 09:35 출발 → KIX 도착 약 11:20~11:40 → 입국·수하물 약 1시간 → 숙소 도착 약 14:00 예상. (인터콘티 체크인 15:00이라 짐 먼저 맡기고 늦은 점심 동선 권장)<br>
-    <b>출발(8/5·8/10):</b> 18:15 국제선 → 공항 약 15:00 도착 목표 → 우메다에서 약 60분 → <b>호텔 14:00경 출발</b>. 체크아웃(보통 12:00) 후 짐 보관 가능.
-  </div>
-</div>
+<!-- ===== 탭 2: 일정 ===== -->
+<div class="tab-panel" id="t2">
 
-<!-- 공항 이동 -->
-<div class="section">
-  <h2>🚐 공항 이동 (렌트카 없음)</h2>
-  <table>
-    <thead>
-      <tr><th>구간</th><th>추천 수단</th><th>메모</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>8/1 도착</b><br>KIX → 우메다 (6인+짐)</td>
-        <td>콜밴 / 점보택시 (사전예약)</td>
-        <td>9인승 점보택시 또는 밴 이동이 6인+짐에 가장 편함. 약 50~60분.</td>
-      </tr>
-      <tr>
-        <td><b>8/5 출발</b><br>우메다 → KIX (3인)</td>
-        <td>콜밴 · 택시 또는 리무진버스</td>
-        <td>리무진버스: 우메다(허비스 오사카) 직행 ~60분.</td>
-      </tr>
-      <tr>
-        <td><b>8/10 출발</b><br>우메다 → KIX (3인)</td>
-        <td>콜밴 / 점보택시 (조부모님 편의)</td>
-        <td>조부모님+짐 → 도어투도어 밴 권장.</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="note">
-    <span class="tag tip">팁</span> 짐이 많으면 <b>타큐빈(택배 배송)</b>으로 공항↔호텔 캐리어를 따로 보내면 이동이 훨씬 가벼움. 콜밴은 출발 3건 모두 <b>사전 예약</b> 필요 (MK·야사카 점보택시 등).
-  </div>
-</div>
+  <div class="section">
+    <h2>📋 일자별 일정 <span style="font-size:12px;color:#718096;font-weight:400;">(추천 일정은 편집 가능)</span></h2>
 
-<!-- 숙소 -->
-<div class="section">
-  <h2>🏨 숙소 · 결제</h2>
-  <table>
-    <thead>
-      <tr><th>객실</th><th>기간</th><th>금액</th><th>결제</th><th>사용</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>2 Single Premium 시티뷰</b> ×1</td>
-        <td>8/1 ~ 8/5 (4박)</td>
-        <td>¥291,384</td>
-        <td><span class="tag paid">결제 완료</span></td>
-        <td>본인 · 아내 · 둘째(5)</td>
-      </tr>
-      <tr>
-        <td><b>1 Bedroom Residence 시티뷰</b> ×1</td>
-        <td>8/1 ~ 8/10 (9박)</td>
-        <td>¥727,200</td>
-        <td><span class="tag due">6월 중 결제 예정</span></td>
-        <td>조부모님 · 첫째(8)</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="note">
-    <span class="tag due">리마인더</span> <b>¥727,200 결제 기한 6월 중</b> — 정확한 마감일·취소 정책 확인 필요. 2 Single 룸은 싱글 침대 2개라 3인(부부+5살) 사용 시 <b>엑스트라 베딩</b> 가능 여부 문의 권장.
-  </div>
-</div>
-
-<!-- 캠프 + 통학 -->
-<div class="section">
-  <h2>🎒 영어캠프 · 통학</h2>
-  <div class="ov-grid">
-    <div class="ov-item">
-      <div class="label">캠프</div>
-      <div class="val">OYIS 나카츠 캠퍼스</div>
-      <div class="sub">8/3(월) ~ 8/7(금) · 평일</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">등교</div>
-      <div class="val">택시</div>
-      <div class="sub">우메다 → 나카츠 ¥800~1,000 · 약 5분</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">하교</div>
-      <div class="val">도보 또는 택시</div>
-      <div class="sub">상황 따라 천천히 도보 12~15분 / 택시</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">픽업 담당</div>
-      <div class="val">8/3~8/5 부부 → 8/6~8/7 조부모님</div>
-      <div class="sub">8/5 출발 전 인수인계</div>
-    </div>
-  </div>
-</div>
-
-<!-- 일자별 일정 -->
-<div class="section">
-  <h2>📋 일자별 일정 <span style="font-size:12px;color:#718096;font-weight:400;">(추천 일정은 편집 가능)</span></h2>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/1</span><span class="dc-wd">토</span><span class="dc-grp grp-all">전원 6인</span></div>
-    <ul>
-      <li>09:35 한국 출발 → KIX 도착 약 11:30 → 콜밴으로 우메다 이동</li>
-      <li>약 14:00 인터콘티 도착, 짐 맡기고 체크인 (15:00)</li>
-      <li>늦은 점심 + 그랜드프론트·우메다 주변 가볍게 적응 <span class="tag sugg">추천</span></li>
-      <li>저녁: 호텔/우메다 인근 식사, 일찍 휴식</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/2</span><span class="dc-wd">일</span><span class="dc-grp grp-all">전원 6인</span></div>
-    <ul>
-      <li>캠프 전 유일한 전원 자유일 — 가족 활동 하루</li>
-      <li><span class="tag sugg">추천</span> 가이유칸(해유관) 아쿠아리움 / 엑스포시티 / 텐노지 동물원 / USJ 중 택1 (5·8살 모두 적합)</li>
-      <li>첫째 캠프 대비 일찍 마무리</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/3</span><span class="dc-wd">월</span><span class="dc-grp grp-b">첫째 캠프</span><span class="dc-grp grp-a">부부+둘째</span></div>
-    <ul>
-      <li>오전 첫째 캠프 등교 (택시) — 첫날 동선 확인</li>
-      <li>부부+둘째: 우메다 근처 가벼운 일정 <span class="tag sugg">추천</span> (키즈플라자 오사카 등)</li>
-      <li>하교 픽업 (도보/택시)</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/4</span><span class="dc-wd">화</span><span class="dc-grp grp-b">첫째 캠프</span><span class="dc-grp grp-a">부부+둘째</span></div>
-    <ul>
-      <li>첫째 캠프 등하교</li>
-      <li>부부+둘째: 근교 또는 도심 가족 일정 <span class="tag sugg">추천</span></li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/5</span><span class="dc-wd">수</span><span class="dc-grp grp-all">분기점</span></div>
-    <ul>
-      <li>오전 첫째 캠프 등교 + <b>조부모님께 통학·픽업 인수인계</b></li>
-      <li>부부+둘째: 오전 마무리, 체크아웃(2 Single 룸), 짐 보관</li>
-      <li><b>약 14:00 공항 이동 → 18:15 출발 (본인·아내·둘째 귀국)</b></li>
-      <li>조부모님+첫째: 캠프 하교 픽업, 1BR 레지던스 잔류</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/6</span><span class="dc-wd">목</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
-    <ul>
-      <li>첫째 캠프 등하교 (조부모님)</li>
-      <li>하교 후 우메다 인근 가벼운 일정</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/7</span><span class="dc-wd">금</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
-    <ul>
-      <li>캠프 마지막 날 등하교</li>
-      <li>캠프 수료 마무리</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/8</span><span class="dc-wd">토</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
-    <ul>
-      <li>한큐 백화점 등 <b>지하 직결 쇼핑</b> 위주 — 큰 이동 없음</li>
-      <li>날씨·체력 따라 천천히</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/9</span><span class="dc-wd">일</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
-    <ul>
-      <li>지하 연결 백화점 쇼핑 / 우메다 인근 휴식</li>
-    </ul>
-  </div>
-
-  <div class="day-card">
-    <div class="dc-head"><span class="dc-date">8/10</span><span class="dc-wd">월</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
-    <ul>
-      <li>오전 마지막 쇼핑, 체크아웃(1BR 레지던스, ~12:00), 짐 보관</li>
-      <li><b>약 14:00 공항 이동 → 18:15 출발 (조부모님·첫째 귀국)</b></li>
-    </ul>
-  </div>
-</div>
-
-<!-- 8/8~8/10 -->
-<div class="section">
-  <h2>🛍️ 8/8~8/10 — 조부모님 · 첫째</h2>
-  <p style="font-size:13.5px;color:#4a5568;">
-    캠프 종료(8/7) 후 주말·월요일은 큰 이동 없이 <b>인터콘티넨탈과 지하로 연결된 한큐 백화점 등에서 쇼핑 위주</b>로 보내실 예정. 도어투도어 동선이라 렌트카·장거리 이동 불필요. 8/10 오후 공항 이동.
-  </p>
-</div>
-
-<!-- 저녁거리 쇼핑 추천 -->
-<div class="section">
-  <h2>🍱 저녁거리 쇼핑 추천 <span style="font-size:12px;color:#718096;font-weight:400;">(레지던스 취사 활용)</span></h2>
-  <p style="font-size:13.5px;color:#4a5568;margin-bottom:14px;">
-    1BR 레지던스는 <b>풀 키친(전자레인지·냉장고·식기)</b>이 있어, 백화점 지하 식품관(데파치카)에서 사 와서 데우거나 가볍게 조리해 저녁을 해결하기 좋아. 아래는 그대로 먹기 / 데우기 / 가볍게 조리 / 아이용으로 나눈 추천이야.
-  </p>
-  <div class="ov-grid">
-    <div class="ov-item">
-      <div class="label">그대로 먹기 (即食)</div>
-      <div class="val" style="font-weight:600;">스시·사시미 · 惣菜</div>
-      <div class="sub">초밥/회 세트, 가라아게(からあげ), 고로케(コロッケ), 텐푸라, 조림(煮物), 샐러드, 야키토리, 오니기리</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">데우기 (전자레인지)</div>
-      <div class="val" style="font-weight:600;">도시락 · 551 부타망</div>
-      <div class="sub">벤토(弁当), 데파치카 惣菜, <b>551蓬莱 부타망·슈마이</b>(大丸 지하), 그라탕</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">가볍게 조리 (키친)</div>
-      <div class="val" style="font-weight:600;">밥 + 국 · 나베</div>
-      <div class="sub">쌀밥 + 미소시루(컵/즉석), 나베 세트(鍋), 신선 채소·고기, 우동</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">아이용 (5·8살)</div>
-      <div class="val" style="font-weight:600;">가라아게 · 함박 · 과일</div>
-      <div class="sub">가라아게, 함박스테이크(ハンバーグ), 계란말이(玉子焼き), 우동, 제철 과일, 푸딩·케이크</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">아침거리</div>
-      <div class="val" style="font-weight:600;">빵 · 요거트 · 과일</div>
-      <div class="sub">베이커리 빵, 요거트, 우유, 시리얼, 제철 과일(멜론·복숭아·포도)</div>
-    </div>
-    <div class="ov-item">
-      <div class="label">부모님 취향</div>
-      <div class="val" style="font-weight:600;">화식 惣菜 · 제철 과일</div>
-      <div class="sub">구운 생선(焼き魚)·조림, 고급 초밥, 제철 과일, 화과자·양과자</div>
-    </div>
-  </div>
-  <div class="note">
-    <span class="tag tip">실전 팁</span>
-    ① <b>저녁 타임세일</b> — 폐점 1~2시간 전(보통 19시 이후) 惣菜·도시락에 할인 스티커(半額) 자주 붙음.
-    ② <b>여름철</b> — 계산 시 <b>보냉백·아이스팩(保冷剤)</b> 요청하고, 냉장식품은 맨 마지막에 사서 바로 귀가.
-    ③ 매장별 강점 — <b>한신 B1</b> 惣菜·명물 이카야키, <b>한큐 B1~2</b> 최고급 惣菜·디저트, <b>다이마루 B1~2</b> 551부타망·델리(13F 포켓몬센터는 아이 동반 시 보너스).
-    ④ 도착 첫날(8/1) 지친 저녁엔 가장 가까운 <b>루크아/다이마루</b>에서 간단히.
-  </div>
-</div>
-
-<!-- 백화점 식품관 동선 (부모님 가이드) -->
-<div class="section">
-  <h2>🗺️ 백화점 지하 식품관 동선 <span style="font-size:12px;color:#718096;font-weight:400;">(부모님 가이드)</span></h2>
-  <p style="font-size:13.5px;color:#4a5568;margin-bottom:14px;">
-    인터콘티넨탈은 <b>그랜드프론트 오사카 북관(Tower C)</b>에 있어. 모든 식품관은 <b>오사카역(JR大阪駅)</b>을 거쳐 연결돼. 한여름이니 <b>냉방되는 실내·지하 동선</b> 위주로 안내할게. 표지판의 <b>일본어 매장 이름</b>만 따라가면 길을 잃지 않아.
-  </p>
-
-  <div class="note" style="background:#ecfeff;border-left-color:#0e7490;color:#155e75;margin-top:0;margin-bottom:16px;">
-    <b>공통 1구간 (먼저 오사카역까지):</b> 호텔 로비(20F) → 엘리베이터로 <b>그랜드프론트 1F/지하</b> → 「<b>大阪駅 / JR Osaka Station</b>」 표지판 따라 이동. 더운 날·비 오는 날은 <b>지하(B1) 통로</b>가 편하고, 짐 들고 계단 피하려면 <b>엘리베이터</b> 이용. 오사카역에 도착하면 아래 매장별 안내로 연결.
-  </div>
-
-  <table>
-    <thead>
-      <tr><th>백화점</th><th>표지판 (따라갈 일본어)</th><th>식품관 위치</th><th>난이도 · 도보</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>ルクア / ルクア1100</b><br>(루크아)</td>
-        <td>「ルクア」「LUCUA」</td>
-        <td>지하2층 <b>바루치카(バルチカ)</b> — 델리·이트인</td>
-        <td><span class="tag paid">가장 쉬움</span><br>약 7~10분</td>
-      </tr>
-      <tr>
-        <td><b>大丸梅田</b><br>(다이마루)</td>
-        <td>「大丸 / DAIMARU」「サウスゲート(남쪽)」</td>
-        <td>지하1~2층 데파치카 · 551蓬莱</td>
-        <td><span class="tag paid">쉬움</span><br>약 8~12분</td>
-      </tr>
-      <tr>
-        <td><b>阪神梅田本店</b><br>(한신)</td>
-        <td>「阪神 / HANSHIN」「ディアモール(Diamor)」</td>
-        <td>지하1층 데파치카 (명물 이카야키·스낵파크)</td>
-        <td><span class="tag tip">보통</span><br>약 12~15분</td>
-      </tr>
-      <tr>
-        <td><b>阪急うめだ本店</b><br>(한큐)</td>
-        <td>「阪急 / HANKYU」「ディアモール」「ホワイティうめだ(Whity)」</td>
-        <td>지하1~2층 데파치카 (최고급)</td>
-        <td><span class="tag tip">보통~약간 멈</span><br>약 13~18분</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="margin-top:16px;">
     <div class="day-card">
-      <div class="dc-head"><span class="dc-date">루크아 / 다이마루</span><span class="dc-grp grp-all">제일 가깝고 쉬움</span></div>
+      <div class="dc-head"><span class="dc-date">8/1</span><span class="dc-wd">토</span><span class="dc-grp grp-all">전원 6인</span></div>
       <ul>
-        <li>둘 다 <b>오사카역에 바로 붙어 있어</b> 추가 이동이 거의 없음 — 지치거나 비 오는 날 최적</li>
-        <li><b>루크아</b>: 오사카역 도착 후 「ルクア」 표지판 → 지하2층 <b>바루치카</b>(즉석 델리·먹거리)</li>
-        <li><b>다이마루</b>: 「サウスゲート(South Gate)」 방향 → 지하1~2층 식품관, <b>551 부타망</b> 포장 인기</li>
+        <li>09:35 한국 출발 → KIX 도착 약 11:30 → 콜밴으로 우메다 이동</li>
+        <li>약 14:00 인터콘티 도착, 짐 맡기고 체크인 (15:00)</li>
+        <li>늦은 점심 + 그랜드프론트·우메다 주변 가볍게 적응 <span class="tag sugg">추천</span></li>
+        <li>저녁: 호텔/우메다 인근 식사, 일찍 휴식</li>
       </ul>
     </div>
+
     <div class="day-card">
-      <div class="dc-head"><span class="dc-date">한신 (阪神)</span><span class="dc-grp grp-b">명물 데파치카</span></div>
+      <div class="dc-head"><span class="dc-date">8/2</span><span class="dc-wd">일</span><span class="dc-grp grp-all">전원 6인</span></div>
       <ul>
-        <li>오사카역에서 <b>지하 「ディアモール(Diamor)」</b>로 내려가 「阪神」 표지판 따라 남쪽으로</li>
+        <li>캠프 전 유일한 전원 자유일 — 가족 활동 하루</li>
+        <li><span class="tag sugg">추천</span> 가이유칸(해유관) 아쿠아리움 / 엑스포시티 / 텐노지 동물원 / USJ 중 택1 (5·8살 모두 적합)</li>
+        <li>첫째 캠프 대비 일찍 마무리</li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/3</span><span class="dc-wd">월</span><span class="dc-grp grp-b">첫째 캠프</span><span class="dc-grp grp-a">부부+둘째</span></div>
+      <ul>
+        <li>오전 첫째 캠프 등교 (택시) — 첫날 동선 확인</li>
+        <li>부부+둘째: 우메다 근처 가벼운 일정 <span class="tag sugg">추천</span> (키즈플라자 오사카 등)</li>
+        <li>하교 픽업 (도보/택시)</li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/4</span><span class="dc-wd">화</span><span class="dc-grp grp-b">첫째 캠프</span><span class="dc-grp grp-a">부부+둘째</span></div>
+      <ul>
+        <li>첫째 캠프 등하교</li>
+        <li>부부+둘째: 근교 또는 도심 가족 일정 <span class="tag sugg">추천</span></li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/5</span><span class="dc-wd">수</span><span class="dc-grp grp-all">분기점</span></div>
+      <ul>
+        <li>오전 첫째 캠프 등교 + <b>조부모님께 통학·픽업 인수인계</b></li>
+        <li>부부+둘째: 오전 마무리, 체크아웃(2 Single 룸), 짐 보관</li>
+        <li><b>약 14:00 공항 이동 → 18:15 출발 (본인·아내·둘째 귀국)</b></li>
+        <li>조부모님+첫째: 캠프 하교 픽업, 1BR 레지던스 잔류</li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/6</span><span class="dc-wd">목</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
+      <ul>
+        <li>첫째 캠프 등하교 (조부모님)</li>
+        <li>하교 후 우메다 인근 가벼운 일정</li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/7</span><span class="dc-wd">금</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
+      <ul>
+        <li>캠프 마지막 날 등하교</li>
+        <li>캠프 수료 마무리</li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/8</span><span class="dc-wd">토</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
+      <ul>
+        <li>한큐 백화점 등 <b>지하 직결 쇼핑</b> 위주 — 큰 이동 없음</li>
+        <li>날씨·체력 따라 천천히</li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/9</span><span class="dc-wd">일</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
+      <ul>
+        <li>지하 연결 백화점 쇼핑 / 우메다 인근 휴식</li>
+      </ul>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">8/10</span><span class="dc-wd">월</span><span class="dc-grp grp-b">조부모님+첫째</span></div>
+      <ul>
+        <li>오전 마지막 쇼핑, 체크아웃(1BR 레지던스, ~12:00), 짐 보관</li>
+        <li><b>약 14:00 공항 이동 → 18:15 출발 (조부모님·첫째 귀국)</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🛍️ 8/8~8/10 — 조부모님 · 첫째</h2>
+    <p style="font-size:13.5px;color:#4a5568;">
+      캠프 종료(8/7) 후 주말·월요일은 큰 이동 없이 <b>인터콘티넨탈과 지하로 연결된 한큐 백화점 등에서 쇼핑 위주</b>로 보내실 예정. 도어투도어 동선이라 렌트카·장거리 이동 불필요. 8/10 오후 공항 이동. (쇼핑 동선·길찾기는 <b>「식사·쇼핑」 탭</b> 참고)
+    </p>
+  </div>
+
+</div>
+
+<!-- ===== 탭 3: 숙소·항공 ===== -->
+<div class="tab-panel" id="t3">
+
+  <div class="section">
+    <h2>🏨 숙소 · 결제</h2>
+    <table>
+      <thead>
+        <tr><th>객실</th><th>기간</th><th>금액</th><th>결제</th><th>사용</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>2 Single Premium 시티뷰</b> ×1</td>
+          <td>8/1 ~ 8/5 (4박)</td>
+          <td>¥291,384</td>
+          <td><span class="tag paid">결제 완료</span></td>
+          <td>본인 · 아내 · 둘째(5)</td>
+        </tr>
+        <tr>
+          <td><b>1 Bedroom Residence 시티뷰</b> ×1</td>
+          <td>8/1 ~ 8/10 (9박)</td>
+          <td>¥727,200</td>
+          <td><span class="tag due">6월 중 결제 예정</span></td>
+          <td>조부모님 · 첫째(8)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <span class="tag due">리마인더</span> <b>¥727,200 결제 기한 6월 중</b> — 정확한 마감일·취소 정책 확인 필요. 2 Single 룸은 싱글 침대 2개라 3인(부부+5살) 사용 시 <b>엑스트라 베딩</b> 가능 여부 문의 권장.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>✈️ 항공편</h2>
+    <table>
+      <thead>
+        <tr><th>날짜</th><th>출발 시각</th><th>구간</th><th>탑승</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>8/1 (토)</b></td><td>09:35 출발</td><td>한국 → 간사이(KIX)</td><td>전원 6인</td></tr>
+        <tr><td><b>8/5 (수)</b></td><td>18:15 출발</td><td>간사이(KIX) → 한국</td><td>본인 · 아내 · 둘째</td></tr>
+        <tr><td><b>8/10 (월)</b></td><td>18:15 출발</td><td>간사이(KIX) → 한국</td><td>조부모님 · 첫째</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <b>도착(8/1):</b> 09:35 출발 → KIX 도착 약 11:20~11:40 → 입국·수하물 약 1시간 → 숙소 도착 약 14:00 예상. (인터콘티 체크인 15:00이라 짐 먼저 맡기고 늦은 점심 동선 권장)<br>
+      <b>출발(8/5·8/10):</b> 18:15 국제선 → 공항 약 15:00 도착 목표 → 우메다에서 약 60분 → <b>호텔 14:00경 출발</b>. 체크아웃(보통 12:00) 후 짐 보관 가능.
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 탭 4: 교통·통학 ===== -->
+<div class="tab-panel" id="t4">
+
+  <div class="section">
+    <h2>🚐 공항 이동 (렌트카 없음)</h2>
+    <table>
+      <thead>
+        <tr><th>구간</th><th>추천 수단</th><th>메모</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>8/1 도착</b><br>KIX → 우메다 (6인+짐)</td>
+          <td>콜밴 / 점보택시 (사전예약)</td>
+          <td>9인승 점보택시 또는 밴 이동이 6인+짐에 가장 편함. 약 50~60분.</td>
+        </tr>
+        <tr>
+          <td><b>8/5 출발</b><br>우메다 → KIX (3인)</td>
+          <td>콜밴 · 택시 또는 리무진버스</td>
+          <td>리무진버스: 우메다(허비스 오사카) 직행 ~60분.</td>
+        </tr>
+        <tr>
+          <td><b>8/10 출발</b><br>우메다 → KIX (3인)</td>
+          <td>콜밴 / 점보택시 (조부모님 편의)</td>
+          <td>조부모님+짐 → 도어투도어 밴 권장.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <span class="tag tip">팁</span> 짐이 많으면 <b>타큐빈(택배 배송)</b>으로 공항↔호텔 캐리어를 따로 보내면 이동이 훨씬 가벼움. 콜밴은 출발 3건 모두 <b>사전 예약</b> 필요 (MK·야사카 점보택시 등).
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎒 영어캠프 · 통학</h2>
+    <div class="ov-grid">
+      <div class="ov-item">
+        <div class="label">캠프</div>
+        <div class="val">OYIS 나카츠 캠퍼스</div>
+        <div class="sub">8/3(월) ~ 8/7(금) · 평일</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">주소</div>
+        <div class="val">大阪市北区中津6-7-34</div>
+        <div class="sub">우메다에서 매우 가까움</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">등교</div>
+        <div class="val">택시</div>
+        <div class="sub">우메다 → 나카츠 ¥800~1,000 · 약 5분</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">하교</div>
+        <div class="val">도보 또는 택시</div>
+        <div class="sub">상황 따라 천천히 도보 12~15분 / 택시</div>
+      </div>
+    </div>
+    <div class="map-btn-row">
+      <a class="map-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=6-7-34+Nakatsu+Kita-ku+Osaka&travelmode=driving"><span>🚕</span> 캠프 길찾기 (택시/차)</a>
+      <a class="map-btn alt" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=6-7-34+Nakatsu+Kita-ku+Osaka&travelmode=walking"><span>🚶</span> 캠프 길찾기 (도보)</a>
+      <a class="map-btn alt" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=InterContinental+Osaka&travelmode=walking"><span>🏨</span> 호텔로 돌아가기 (도보)</a>
+    </div>
+    <div class="note">
+      <b>인수인계:</b> 8/3~8/5 등하교는 부부, <b>8/6~8/7은 조부모님</b>. 8/5 출발 전 픽업 시간·동선 공유 필수. 택시 기사에게는 위 주소(<b>中津6-7-34</b>)를 보여주면 됨.
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 탭 5: 식사·쇼핑 ===== -->
+<div class="tab-panel" id="t5">
+
+  <div class="section">
+    <h2>🍱 저녁거리 쇼핑 추천 <span style="font-size:12px;color:#718096;font-weight:400;">(레지던스 취사 활용)</span></h2>
+    <p style="font-size:13.5px;color:#4a5568;margin-bottom:14px;">
+      1BR 레지던스는 <b>풀 키친(전자레인지·냉장고·식기)</b>이 있어, 백화점 지하 식품관(데파치카)에서 사 와서 데우거나 가볍게 조리해 저녁을 해결하기 좋아. 아래는 그대로 먹기 / 데우기 / 가볍게 조리 / 아이용으로 나눈 추천이야.
+    </p>
+    <div class="ov-grid">
+      <div class="ov-item">
+        <div class="label">그대로 먹기 (即食)</div>
+        <div class="val" style="font-weight:600;">스시·사시미 · 惣菜</div>
+        <div class="sub">초밥/회 세트, 가라아게(からあげ), 고로케(コロッケ), 텐푸라, 조림(煮物), 샐러드, 야키토리, 오니기리</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">데우기 (전자레인지)</div>
+        <div class="val" style="font-weight:600;">도시락 · 551 부타망</div>
+        <div class="sub">벤토(弁当), 데파치카 惣菜, <b>551蓬莱 부타망·슈마이</b>(大丸 지하), 그라탕</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">가볍게 조리 (키친)</div>
+        <div class="val" style="font-weight:600;">밥 + 국 · 나베</div>
+        <div class="sub">쌀밥 + 미소시루(컵/즉석), 나베 세트(鍋), 신선 채소·고기, 우동</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">아이용 (5·8살)</div>
+        <div class="val" style="font-weight:600;">가라아게 · 함박 · 과일</div>
+        <div class="sub">가라아게, 함박스테이크(ハンバーグ), 계란말이(玉子焼き), 우동, 제철 과일, 푸딩·케이크</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">아침거리</div>
+        <div class="val" style="font-weight:600;">빵 · 요거트 · 과일</div>
+        <div class="sub">베이커리 빵, 요거트, 우유, 시리얼, 제철 과일(멜론·복숭아·포도)</div>
+      </div>
+      <div class="ov-item">
+        <div class="label">부모님 취향</div>
+        <div class="val" style="font-weight:600;">화식 惣菜 · 제철 과일</div>
+        <div class="sub">구운 생선(焼き魚)·조림, 고급 초밥, 제철 과일, 화과자·양과자</div>
+      </div>
+    </div>
+    <div class="note">
+      <span class="tag tip">실전 팁</span>
+      ① <b>저녁 타임세일</b> — 폐점 1~2시간 전(보통 19시 이후) 惣菜·도시락에 할인 스티커(半額) 자주 붙음.
+      ② <b>여름철</b> — 계산 시 <b>보냉백·아이스팩(保冷剤)</b> 요청하고, 냉장식품은 맨 마지막에 사서 바로 귀가.
+      ③ 도착 첫날(8/1) 지친 저녁엔 가장 가까운 <b>루크아/다이마루</b>에서 간단히.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🗺️ 백화점 지하 식품관 동선 <span style="font-size:12px;color:#718096;font-weight:400;">(부모님 가이드)</span></h2>
+    <p style="font-size:13.5px;color:#4a5568;margin-bottom:14px;">
+      인터콘티넨탈은 <b>그랜드프론트 오사카 북관(Tower C)</b>에 있어. 모든 식품관은 <b>오사카역(JR大阪駅)</b>을 거쳐 연결돼. 한여름이니 <b>냉방되는 실내·지하 동선</b> 위주로 안내할게. 아래 <b>「📍 길찾기」 버튼</b>을 누르면 휴대폰 <b>현재 위치 기준 구글맵 도보 경로</b>가 바로 열려.
+    </p>
+
+    <div class="note" style="background:#ecfeff;border-left-color:#0e7490;color:#155e75;margin-top:0;margin-bottom:16px;">
+      <b>공통 1구간 (먼저 오사카역까지):</b> 호텔 로비(20F) → 엘리베이터로 <b>그랜드프론트 1F/지하</b> → 「<b>大阪駅 / JR Osaka Station</b>」 표지판 따라 이동. 더운 날·비 오는 날은 <b>지하(B1) 통로</b>가 편하고, 짐 들고 계단 피하려면 <b>엘리베이터(エレベーター)</b> 이용.
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">루크아 / 다이마루</span><span class="dc-grp grp-all">제일 가깝고 쉬움 (약 7~12분)</span></div>
+      <ul>
+        <li>둘 다 <b>오사카역에 바로 붙어 있어</b> 추가 이동이 거의 없음 — 지치거나 비 오는 날 최적</li>
+        <li><b>루크아</b>: 「ルクア / LUCUA」 표지판 → 지하2층 <b>바루치카(バルチカ)</b>(즉석 델리·먹거리)</li>
+        <li><b>다이마루</b>: 「サウスゲート(South Gate)」 방향 → 지하1~2층 식품관, <b>551 부타망</b> 포장 인기</li>
+      </ul>
+      <div class="map-btn-row">
+        <a class="map-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=LUCUA+Osaka&travelmode=walking"><span>📍</span> 루크아 길찾기</a>
+        <a class="map-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Daimaru+Umeda&travelmode=walking"><span>📍</span> 다이마루 길찾기</a>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="dc-head"><span class="dc-date">한신 (阪神)</span><span class="dc-grp grp-b">명물 데파치카 (약 12~15분)</span></div>
+      <ul>
+        <li>오사카역에서 <b>지하 「ディアモール(Diamor)」</b>로 내려가 「阪神 / HANSHIN」 표지판 따라 남쪽으로</li>
         <li>지하1층 <b>데파치카가 일본 최강급</b> — 명물 이카야키(いか焼き), 스낵파크, 惣菜 풍부</li>
         <li>전 구간 지하라 <b>한여름 더위 회피</b>에 좋음</li>
       </ul>
+      <div class="map-btn-row">
+        <a class="map-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Hanshin+Department+Store+Umeda&travelmode=walking"><span>📍</span> 한신 백화점 길찾기</a>
+      </div>
     </div>
+
     <div class="day-card">
-      <div class="dc-head"><span class="dc-date">한큐 (阪急)</span><span class="dc-grp grp-b">최고급 데파치카</span></div>
+      <div class="dc-head"><span class="dc-date">한큐 (阪急)</span><span class="dc-grp grp-b">최고급 데파치카 (약 13~18분)</span></div>
       <ul>
-        <li>지하 「ディアモール」 또는 「ホワイティうめだ(Whity)」 통해 「阪急」 방향으로 (한신보다 조금 더 안쪽)</li>
+        <li>지하 「ディアモール」 또는 「ホワイティうめだ(Whity)」 통해 「阪急 / HANKYU」 방향으로 (한신보다 조금 더 안쪽)</li>
         <li>지하1~2층 <b>최고급 惣菜·도시락·초밥·디저트</b> — 부모님·특별한 저녁용</li>
         <li>조금 머니 <b>체력 좋은 날·여유 있는 날</b>에 추천</li>
       </ul>
+      <div class="map-btn-row">
+        <a class="map-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Hankyu+Department+Store+Umeda&travelmode=walking"><span>📍</span> 한큐 백화점 길찾기</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="tag tip">부모님 안심 팁</span>
+      길찾기 버튼은 <b>휴대폰 GPS 현재 위치</b>에서 출발 경로를 그려줘 (위치 권한 허용 필요). 다만 우메다 지하는 갈래가 많아, 실내에선 <b>매장 표지판(阪急·阪神·大丸)</b>을 함께 보는 게 가장 정확해. 첫 외출은 <b>호텔 컨시어지 지도</b>를 받아 나가면 안심. 길이 헷갈리면 직원에게 <b>매장 이름</b>만 보여주면 방향을 알려줘.
     </div>
   </div>
 
-  <div class="note">
-    <span class="tag tip">부모님 안심 팁</span>
-    우메다 지하는 넓고 갈래가 많아 <b>처음 한 번은 호텔 컨시어지에서 지도를 받아</b> 출발하면 좋아. 길이 헷갈리면 <b>매장 직원에게 매장 이름(阪急·阪神·大丸)만 보여주면</b> 방향을 알려줘. 엘리베이터는 각 백화점·역에 있으니 <b>계단 대신 엘리베이터 표시(エレベーター)</b>를 찾으면 됨.
-  </div>
-</div>
-
-<!-- 체크리스트 -->
-
-<div class="section">
-  <h2>✅ 준비 체크리스트 · 리마인더</h2>
-  <ul class="check-list">
-    <li><b>¥727,200 결제</b> (1BR 레지던스) — 6월 중, 정확한 마감일·취소정책 확인</li>
-    <li><b>콜밴/점보택시 사전 예약</b> 3건 — 8/1 도착, 8/5 출발, 8/10 출발</li>
-    <li><b>캠프 통학 인수인계</b> — 8/5 출발 전 조부모님께 동선·픽업시간 공유</li>
-    <li><b>엑스트라 베딩 문의</b> — 2 Single 룸 3인 사용(부부+5살)</li>
-    <li><b>타큐빈(짐 배송)</b> 검토 — 공항↔호텔 캐리어 부담 경감</li>
-    <li><b>OYIS 캠프 준비물·등하원 시간</b> 최종 확인</li>
-    <li><b>고층 시티뷰 객실 배정·인접 객실 요청</b> (8/1~8/5 두 룸 가까이)</li>
-  </ul>
 </div>
 
 <footer>
@@ -667,19 +587,29 @@
 </div><!-- /.container -->
 
 <script>
+  // D-day
   (function () {
     function dDay(target) {
-      var today = new Date();
-      today.setHours(0, 0, 0, 0);
-      var t = new Date(target);
-      return Math.floor((t - today) / 86400000);
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      return Math.floor((new Date(target) - today) / 86400000);
     }
     var d = dDay('2026-08-01');
     var el = document.getElementById('dday');
-    if (el) {
-      el.textContent = d > 0 ? ('출발 D-' + d) : (d === 0 ? '출발 D-DAY 🎉' : '여행 진행/종료');
-    }
+    if (el) el.textContent = d > 0 ? ('출발 D-' + d) : (d === 0 ? '출발 D-DAY 🎉' : '여행 진행/종료');
   })();
+
+  // 탭 전환
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tab = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = document.getElementById(tab);
+      if (panel) panel.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
 </script>
 
 </body>
