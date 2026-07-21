@@ -381,7 +381,47 @@
     .tab-btn { min-width: 95px; font-size: 12px; padding: 9px 10px; }
     .breadcrumb { font-size: 12px; padding: 10px 14px; }
   }
+  /* ===== 4성 재구성 추가 ===== */
+  .avail-banner { background:#fff5f5; border:1px solid #feb2b2; border-left:5px solid #c53030; border-radius:10px; padding:16px 18px; margin-bottom:20px; }
+  .avail-banner h3 { color:#742a2a; font-size:15px; margin-bottom:8px; }
+  .avail-banner p { color:#742a2a; font-size:13px; line-height:1.65; }
+  .avail-banner b { color:#9b2c2c; }
+  .sec { background:white; border-radius:12px; padding:22px; margin-bottom:20px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .sec h2 { font-size:18px; color:#822727; margin-bottom:14px; border-bottom:2px solid #fff5f5; padding-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .sec .sub { font-size:12.5px; color:#718096; margin-bottom:14px; }
+  .cand-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:14px; }
+  .cand-card { border:1px solid #edf2f7; border-radius:10px; padding:16px; background:#fafbfc; }
+  .cand-card.toppick { border:2px solid #48bb78; background:#f0fff4; }
+  .cand-card h3 { font-size:16px; color:#1a202c; margin-bottom:2px; }
+  .cand-card .loc { font-size:12px; color:#718096; margin-bottom:10px; }
+  .cand-card .row { font-size:12.5px; color:#4a5568; padding:2px 0; }
+  .cand-card .row b { color:#2d3748; }
+  .badges { margin-top:9px; display:flex; flex-wrap:wrap; gap:5px; }
+  .bdg { font-size:10.5px; font-weight:600; padding:2px 8px; border-radius:5px; }
+  .bdg.top { background:#c6f6d5; color:#22543d; }
+  .bdg.no { background:#fed7d7; color:#742a2a; }
+  .bdg.warn { background:#feebc8; color:#7b341e; }
+  .bdg.chk { background:#e2e8f0; color:#4a5568; }
+  .bdg.elev { background:#bee3f8; color:#2a4365; }
+  .price { font-weight:700; color:#822727; }
+  .krw { color:#718096; font-size:11.5px; }
+  #map4 { height:360px; width:100%; border-radius:8px; z-index:1; }
+  .dd { border:1px solid #edf2f7; border-radius:10px; padding:16px 18px; margin-bottom:14px; background:#fafbfc; }
+  .dd h3 { font-size:16px; color:#822727; margin-bottom:10px; }
+  .dd table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .dd td { border-bottom:1px solid #edf2f7; padding:7px 8px; vertical-align:top; }
+  .dd td:first-child { font-weight:600; color:#4a5568; width:96px; white-space:nowrap; }
+  .chk-list { list-style:none; }
+  .chk-list li { font-size:13px; color:#2d3748; padding:6px 0 6px 26px; position:relative; border-bottom:1px solid #f7fafc; }
+  .chk-list li::before { content:"☐"; position:absolute; left:4px; top:5px; color:#c53030; font-size:14px; }
+  details.archive { background:white; border-radius:12px; box-shadow:0 1px 3px rgba(0,0,0,0.06); margin-bottom:20px; padding:0 2px; }
+  details.archive > summary { cursor:pointer; padding:18px 22px; font-size:15px; font-weight:600; color:#4a5568; list-style:none; }
+  details.archive > summary::-webkit-details-marker { display:none; }
+  details.archive > summary::before { content:"\25B6  "; color:#a0aec0; font-size:11px; }
+  details.archive[open] > summary::before { content:"\25BC  "; }
+  .arc-note { font-size:12px; color:#718096; padding:0 22px 12px; }
 </style>
+
 </head>
 <body>
 <div class="container">
@@ -403,6 +443,134 @@
   </div>
 </header>
 
+<!-- 가용성 경고 -->
+<div class="avail-banner">
+  <h3>🚨 예약 서둘러야 함 — 해당 날짜 대부분 매진</h3>
+  <p>
+    <b>2026.09.18~25(7박) 실시간 조회(2026-07-22) 결과, 인기 4성 대부분이 이 날짜에 매진 상태예요.</b>
+    dei Mellini 매진 · Artemide 완전매진 · iQ 2인실 1개만(6인 불가) · Nazionale 7박 연속 불가(일부 날짜 막힘).
+    → 대응: ① 마음에 드는 곳은 <b>호텔에 직접 전화·이메일로 취소분/6인 가용 문의</b>, ② <b>체크인을 1~3일 조정</b>(예: 9/19 시작)하면 열릴 가능성, ③ 후보 폭 넓혀 병행 예약. 가격·재고는 대부분 추정/변동이라 예약 전 재확인 필수.
+  </p>
+</div>
+
+<!-- 4성 후보 지도 -->
+<div class="sec">
+  <h2>🗺️ 4성 후보 위치</h2>
+  <div id="map4"></div>
+  <div class="map-legend" style="margin-top:12px;">
+    <span class="item"><span class="dot center"></span> 로마 중심 (Piazza Venezia)</span>
+    <span class="item"><span class="dot hotel" style="background:#822727;"></span> 4성 후보 6곳 (번호=아래 카드)</span>
+  </div>
+</div>
+
+<!-- 4성 후보 6곳 -->
+<div class="sec">
+  <h2>🏨 4성 후보 6곳 <span style="font-size:12px;color:#718096;font-weight:400;">— 후기 일관성·리노베이션 필터 통과</span></h2>
+  <div class="sub">예산 ₩20~30만/객실 ~ Artemide급까지 · 6인(조부모+부부+8·5세) · 엘리베이터 필수 · 도심/메트로 · 요금은 성수기 <b>추정</b>(₩≈1,530/€), 예약 전 재확인.</div>
+  <div class="cand-grid">
+
+    <div class="cand-card toppick">
+      <h3>1. Hotel dei Mellini</h3>
+      <div class="loc">프라티 · 바티칸 도보권</div>
+      <div class="row"><b>6인 구성:</b> 7인 패밀리룸 80㎡(침실3·욕실3, 한 유닛!)</div>
+      <div class="row"><b>추정가:</b> <span class="price">€280~350대/박</span> <span class="krw">(₩43~54만)</span></div>
+      <div class="row"><b>후기:</b> TA 4.5 안정 · 소음↓ 조용</div>
+      <div class="badges"><span class="bdg top">TOP · 다세대 최적</span><span class="bdg elev">엘베 有</span><span class="bdg no">해당날짜 매진</span></div>
+    </div>
+
+    <div class="cand-card toppick">
+      <h3>2. iQ Hotel Roma</h3>
+      <div class="loc">레푸블리카역 200m</div>
+      <div class="row"><b>6인 구성:</b> 2룸 필수 (Quad4 + Double2 등)</div>
+      <div class="row"><b>추정가:</b> <span class="price">성수기 2룸 ₩40만대~</span></div>
+      <div class="row"><b>후기:</b> Booking 9.6 최고 · <b>단 소음 편차</b></div>
+      <div class="badges"><span class="bdg top">TOP · 최고평점</span><span class="bdg elev">엘베 2대</span><span class="bdg no">6인 불가(문의)</span></div>
+    </div>
+
+    <div class="cand-card">
+      <h3>3. Hotel Nazionale</h3>
+      <div class="loc">판테온 도보 5분</div>
+      <div class="row"><b>6인 구성:</b> 이그제큐티브+추가룸 (2룸)</div>
+      <div class="row"><b>추정가:</b> <span class="price">€400~480/박</span> <span class="krw">(₩61~73만)</span></div>
+      <div class="row"><b>후기:</b> Booking 9.1 / TA 4.6 안정</div>
+      <div class="badges"><span class="bdg elev">엘베 有</span><span class="bdg warn">7박 연속 불가(날짜조정 시 가능성)</span></div>
+    </div>
+
+    <div class="cand-card">
+      <h3>4. Hotel Isa</h3>
+      <div class="loc">프라티</div>
+      <div class="row"><b>6인 구성:</b> 분리형 패밀리룸 + 추가룸</div>
+      <div class="row"><b>추정가:</b> <span class="price">€160~270/박</span> <span class="krw">(₩24~41만)</span></div>
+      <div class="row"><b>후기:</b> 조식 9.2 최상 · 알레르기 대응</div>
+      <div class="badges"><span class="bdg elev">엘베 有</span><span class="bdg chk">가용 미확인</span></div>
+    </div>
+
+    <div class="cand-card">
+      <h3>5. Hotel Delle Nazioni</h3>
+      <div class="loc">트레비 초근접</div>
+      <div class="row"><b>6인 구성:</b> 패밀리룸 ×2</div>
+      <div class="row"><b>추정가:</b> <span class="price">€390~430/박</span> <span class="krw">(₩60~66만)</span></div>
+      <div class="row"><b>후기:</b> 2022 리노 확인 · 단 TA 4.1(플랫폼 편차)</div>
+      <div class="badges"><span class="bdg elev">엘베 有(작음)</span><span class="bdg chk">가용 미확인</span></div>
+    </div>
+
+    <div class="cand-card">
+      <h3>6. Hotel Artemide</h3>
+      <div class="loc">레푸블리카역 100m</div>
+      <div class="row"><b>6인 구성:</b> 아웃터 커넥팅룸 (2룸)</div>
+      <div class="row"><b>추정가:</b> <span class="price">€600~950/박</span> <span class="krw">(₩92~145만)</span></div>
+      <div class="row"><b>후기:</b> Booking 9.2 / TA 4.8 최상·편차 없음</div>
+      <div class="badges"><span class="bdg no">완전 매진(배제 권장)</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOP 픽 심층 -->
+<div class="sec">
+  <h2>⭐ TOP 픽 심층 검증</h2>
+
+  <div class="dd">
+    <h3>1. Hotel dei Mellini — 다세대 가족에 가장 안전 (권장 1순위)</h3>
+    <table>
+      <tr><td>6인 수용</td><td><b>7인 패밀리룸 실재 확인</b>(공식). 80㎡, 작은 복도로 침실3 연결, <b>출입문 1개·각 침실 전용욕실</b>. 6인이 한 유닛에 → 야간 아이 돌봄에 유리</td></tr>
+      <tr><td>엘리베이터</td><td>있음(후기 "거울처럼 깨끗"). 단 공식 FAQ에 "장애인 접근 불가" 문구 → 거동 매우 불편한 분 있으면 크기·커버층 <b>직접 확인</b></td></tr>
+      <tr><td>어린이</td><td>키즈룸·놀이터·탁구, 옥상테라스. 아기침대 무료, 3~10세 엑스트라베드 €30/박</td></tr>
+      <tr><td>조식/시설</td><td>뷔페(품질 호평, 늦으면 소진). 전 객실 무료 와이파이·에어컨. 금연은 요청 필요</td></tr>
+      <tr><td>위치</td><td>프라티(조용). 바티칸·스페인광장·트레비·판테온 도보 10~15분권 → 여름·고령자엔 택시 병행 권장. Lepanto역 근처</td></tr>
+      <tr><td>가용성</td><td><b>해당 날짜 매진</b> — 취소분 대비 직접 문의 가치 있음(부티크라 엔진 밖 취소분 존재 가능)</td></tr>
+    </table>
+  </div>
+
+  <div class="dd">
+    <h3>2. iQ Hotel Roma — 최고 평점, 단 6인 2룸·소음 유의</h3>
+    <table>
+      <tr><td>6인 수용</td><td>단일 객실 <b>최대 4인(Quad)</b> — 6인은 <b>2룸 필수</b>(Quad+Double 등). 커넥팅 구조 공식 확인 안 됨 → <b>인접 배정 요청</b> 필요(보장 X)</td></tr>
+      <tr><td>엘리베이터</td><td>2대, 전 층 운행(양호)</td></tr>
+      <tr><td>어린이</td><td>옥상은 <b>수영장 아님 → 커플용 자쿠지</b>(아동 이용 불명, 확인 필요). 아기침대·키즈시설은 1차 미확인</td></tr>
+      <tr><td>조식/시설</td><td>루프탑 뷔페 호평. 전관 금연(옥상만 흡연). 전 객실 전용욕실·에어컨·짐보관</td></tr>
+      <tr><td>위치</td><td>Repubblica역 도보 2~5분(우수), 테르미니 7분. 판테온 등은 15~20분</td></tr>
+      <tr><td>후기/주의</td><td>Booking 9.3·청결 최상. <b>단 소음 불만 반복</b>(거리쪽·1층·24h 옥상) → 상층·중정쪽 배정 요청</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 예약 전 체크리스트 -->
+<div class="sec">
+  <h2>✅ 예약 전 직접 확인 (전화·이메일)</h2>
+  <ul class="chk-list">
+    <li><b>해당 날짜(9/18~25) 6인 실제 가용·요금</b> — 매진이면 취소분 대기/날짜 조정 문의</li>
+    <li><b>dei Mellini</b>: 7인 패밀리룸 침대배치·엘베 크기/커버층·금연 배정·베이비시팅</li>
+    <li><b>iQ</b>: 6인 룸 조합·<b>인접(같은 층/옆방) 배정 보장</b>·자쿠지 아동 가능 여부·상층/중정쪽</li>
+    <li><b>공통</b>: 조식 어린이 메뉴·알레르기, 엑스트라베드 요금, 얼리체크인·짐보관</li>
+    <li>가격이 예산(₩20~30만/객실 ~ Artemide급) 안에 들어오는지 최종 확인</li>
+  </ul>
+</div>
+
+
+<details class="archive">
+<summary>📦 [보관] 기존 럭셔리 후보 6곳 — 눌러서 펼치기 (Cavalieri·InterCon·Aleph·Six Senses·de la Ville·Eden)</summary>
+<div class="arc-note">예산 방향이 4성 도심으로 바뀌어 아래는 참고용으로 접어 보관합니다. 지도·탭·상세 그대로 유지.</div>
 <!-- 지도 -->
 <div class="map-section">
   <h2>📍 후보 호텔 위치 — 로마 중심부 기준</h2>
@@ -1042,6 +1210,8 @@
   </ul>
 </div>
 
+</details>
+
 <footer>
   가족 여행 숙소 분석 · accommodation-analyzer · 로마 2026.09 · 가격·정책은 예약 전 공식 확인 권장
 </footer>
@@ -1107,5 +1277,28 @@
   })();
 </script>
 
+<script>
+  (function(){
+    var center=[41.8959,12.4828];
+    var map=L.map('map4').setView([41.902,12.484],13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+    L.circleMarker(center,{radius:8,color:'#fff',weight:2,fillColor:'#2c5282',fillOpacity:1}).addTo(map).bindPopup('<b>로마 중심</b><br>Piazza Venezia');
+    var hotels=[
+      {n:1,name:'Hotel dei Mellini',lat:41.9089,lng:12.4726},
+      {n:2,name:'iQ Hotel Roma',lat:41.9027,lng:12.4936},
+      {n:3,name:'Hotel Nazionale',lat:41.9006,lng:12.4790},
+      {n:4,name:'Hotel Isa',lat:41.9066,lng:12.4738},
+      {n:5,name:'Hotel Delle Nazioni',lat:41.9010,lng:12.4835},
+      {n:6,name:'Hotel Artemide',lat:41.9016,lng:12.4926}
+    ];
+    function ic(n){return L.divIcon({className:'',html:'<div style="background:#822727;color:#fff;width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">'+n+'</div>',iconSize:[24,24],iconAnchor:[12,12]});}
+    var b=[center];
+    hotels.forEach(function(h){L.marker([h.lat,h.lng],{icon:ic(h.n)}).addTo(map).bindPopup('<b>'+h.n+'. '+h.name+'</b>');b.push([h.lat,h.lng]);});
+    map.fitBounds(b,{padding:[40,40]});
+    setTimeout(function(){map.invalidateSize();},200);
+  })();
+  document.querySelectorAll('details.archive').forEach(function(d){d.addEventListener('toggle',function(){if(d.open){setTimeout(function(){window.dispatchEvent(new Event('resize'));},120);}});});
+</script>
 </body>
+
 </html>
