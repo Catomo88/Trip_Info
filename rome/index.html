@@ -420,6 +420,14 @@
   details.archive > summary::before { content:"\25B6  "; color:#a0aec0; font-size:11px; }
   details.archive[open] > summary::before { content:"\25BC  "; }
   .arc-note { font-size:12px; color:#718096; padding:0 22px 12px; }
+  .booking-banner{background:#f0fff4;border:1px solid #9ae6b4;border-left:5px solid #38a169;border-radius:10px;padding:16px 18px;margin-bottom:16px;}
+  .booking-banner h3{color:#22543d;font-size:15px;margin-bottom:8px;}
+  .booking-banner p{color:#22543d;font-size:13px;line-height:1.6;}
+  .booking-banner b{color:#276749;}
+  .booking-banner ul{list-style:none;margin-top:6px;}
+  .booking-banner li{color:#22543d;font-size:13px;line-height:1.6;padding:2px 0 2px 16px;position:relative;}
+  .booking-banner li::before{content:"\2022";position:absolute;left:2px;color:#38a169;font-weight:700;}
+  .booking-banner li.warn{color:#9b2c2c;}
 </style>
 
 </head>
@@ -443,9 +451,21 @@
   </div>
 </header>
 
+<!-- 확보한 예약 -->
+<div class="booking-banner">
+  <h3>✅ 예약 확보 — Adèsso Hotel · 스튜디오 테라스 ×2</h3>
+  <p><b>체크인 2026.09.18 ~ 체크아웃 09.23 (5박)</b> · 결제 <b>9/12 예정</b> · 4성 디자인호텔(83실/7층)</p>
+  <ul>
+    <li>객실: <b>Studio con Terrazzo(스튜디오+테라스) ~20㎡ × 2채</b> — 개별 테라스 (조부모 룸 / 부부+아이 룸 분리)</li>
+    <li>위치: <b>로마 티부르티나</b> — 메트로 B선·티부르티나 기차역 도보 3분. 도심 관광은 메트로 B(테르미니 1정거장·콜로세오 방면)</li>
+    <li class="warn">확인 필요: ① 여행이 9/18~25(7박)이면 <b>9/23~25(2박) 미확보</b> → 별도 예약? ② 스튜디오 각 정원(6인 배치) ③ 엘리베이터 ④ 결제 9/12 마감·취소정책</li>
+  </ul>
+  <p style="margin-top:8px;font-size:12px;color:#276749;">아래 후보·비교는 이제 <b>백업/참고용</b>입니다.</p>
+</div>
+
 <!-- 가용성 경고 -->
 <div class="avail-banner">
-  <h3>🚨 예약 서둘러야 함 — 해당 날짜 대부분 매진</h3>
+  <h3>ℹ️ 참고 — 이 날짜, 인기 4성 대부분 매진이었음 (그래서 아데소로 확보)</h3>
   <p>
     <b>2026.09.18~25(7박) 실시간 조회(2026-07-22) 결과, 인기 4성 대부분이 이 날짜에 매진 상태예요.</b>
     dei Mellini 매진 · Artemide 완전매진 · iQ 2인실 1개만(6인 불가) · Nazionale 7박 연속 불가(일부 날짜 막힘).
@@ -460,6 +480,7 @@
   <div class="map-legend" style="margin-top:12px;">
     <span class="item"><span class="dot center"></span> 로마 중심 (Piazza Venezia)</span>
     <span class="item"><span class="dot hotel" style="background:#822727;"></span> 4성 후보 6곳 (번호=아래 카드)</span>
+    <span class="item"><span class="dot" style="background:#38a169;"></span> 예약: Adèsso (티부르티나)</span>
   </div>
 </div>
 
@@ -1294,6 +1315,9 @@
     function ic(n){return L.divIcon({className:'',html:'<div style="background:#822727;color:#fff;width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">'+n+'</div>',iconSize:[24,24],iconAnchor:[12,12]});}
     var b=[center];
     hotels.forEach(function(h){L.marker([h.lat,h.lng],{icon:ic(h.n)}).addTo(map).bindPopup('<b>'+h.n+'. '+h.name+'</b>');b.push([h.lat,h.lng]);});
+    var adeso=[41.9107,12.5306];
+    L.marker(adeso,{icon:L.divIcon({className:'',html:'<div style="background:#38a169;color:#fff;width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;">✓</div>',iconSize:[26,26],iconAnchor:[13,13]})}).addTo(map).bindPopup('<b>예약: Adèsso Hotel</b><br>티부르티나 · 스튜디오 테라스 ×2');
+    b.push(adeso);
     map.fitBounds(b,{padding:[40,40]});
     setTimeout(function(){map.invalidateSize();},200);
   })();
