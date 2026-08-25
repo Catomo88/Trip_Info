@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>친퀘테레 5개 마을 (2026.09.25~27)</title>
+<meta property="og:title" content="친퀘테레 5개 마을 가이드">
+<meta property="og:description" content="부모님 2인 · 2026.09.25~27 · 마을별 전경과 접근성">
+<meta property="og:type" content="website">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
+    background: #f5f7fa; color: #1a202c; line-height: 1.6; padding: 20px;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  .breadcrumb {
+    background: white; padding: 12px 18px; border-radius: 10px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px; font-size: 13px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .breadcrumb a { color: #0e7490; text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+  .breadcrumb a:hover { background: #ecfeff; }
+  .breadcrumb .sep { color: #cbd5e0; }
+  .breadcrumb .current { color: #4a5568; font-weight: 500; }
+
+  header {
+    background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+    color: white; padding: 30px 26px; border-radius: 14px; margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  }
+  header h1 { font-size: 25px; margin-bottom: 8px; }
+  header p { opacity: 0.93; font-size: 13.5px; }
+  header .meta { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px; }
+  header .meta span { background: rgba(255,255,255,0.18); padding: 4px 10px; border-radius: 6px; }
+
+  .intro {
+    background: white; border-radius: 12px; padding: 20px 22px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06); font-size: 14px; color: #4a5568;
+  }
+  .intro b { color: #1a202c; }
+
+  .village {
+    background: white; border-radius: 14px; margin-bottom: 20px; overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .v-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: #e2e8f0; }
+  .v-photos a { display: block; height: 240px; overflow: hidden; background: #f1f5f9; }
+  .v-photos img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .v-photos a:hover img { transform: scale(1.04); }
+  .v-body { padding: 20px 22px; }
+  .v-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .v-head h2 { font-size: 21px; color: #1a202c; }
+  .v-head .kr { font-size: 14px; color: #718096; }
+  .v-tag {
+    font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 5px;
+  }
+  .t-easy { background: #c6f6d5; color: #22543d; }
+  .t-mid  { background: #feebc8; color: #7b341e; }
+  .t-hard { background: #fed7d7; color: #742a2a; }
+  .v-desc { font-size: 14px; color: #4a5568; margin: 10px 0 14px; line-height: 1.7; }
+  .v-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .fact { background: #f7fafc; border: 1px solid #edf2f7; border-radius: 9px; padding: 10px 12px; }
+  .fact .l { font-size: 10.5px; color: #718096; text-transform: uppercase; letter-spacing: .4px; }
+  .fact .v { font-size: 13px; color: #1a202c; font-weight: 600; margin-top: 2px; }
+
+  .sec {
+    background: white; border-radius: 12px; padding: 20px 22px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .sec h2 {
+    font-size: 17px; color: #075985; margin-bottom: 14px;
+    border-bottom: 2px solid #f0f9ff; padding-bottom: 10px;
+  }
+  .sec ul { list-style: none; }
+  .sec ul li {
+    font-size: 13.5px; color: #4a5568; padding: 5px 0 5px 15px; position: relative; line-height: 1.6;
+  }
+  .sec ul li::before { content: "•"; position: absolute; left: 2px; color: #0369a1; font-weight: 700; }
+  .sec ul li b { color: #1a202c; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #edf2f7; }
+  th { background: #f7fafc; color: #4a5568; font-size: 11.5px; text-transform: uppercase; }
+
+  .note {
+    background: #f0f9ff; border-left: 4px solid #0369a1; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; font-size: 13px; color: #075985; margin-top: 14px;
+  }
+  .note b { color: #0c4a6e; }
+
+  footer { text-align: center; margin-top: 26px; padding: 16px; font-size: 12px; color: #a0aec0; }
+
+  @media (max-width: 640px) {
+    body { padding: 10px; }
+    .v-photos { grid-template-columns: 1fr; }
+    .v-photos a { height: 200px; }
+    .v-body, .sec, .intro { padding: 16px; }
+    header h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="breadcrumb">
+  <a href="../">← 가족 여행 대시보드</a>
+  <span class="sep">/</span>
+  <span class="current">🇮🇹 친퀘테레 2026.09</span>
+</nav>
+
+<header>
+  <h1>🌊 친퀘테레 — 다섯 마을</h1>
+  <p>리구리아 해안 절벽에 매달린 다섯 개의 색색 마을 · 유네스코 세계유산</p>
+  <div class="meta">
+    <span>📅 2026.09.25 ~ 09.27 (2박)</span>
+    <span>👴👵 부모님 두 분</span>
+    <span>🚆 로마에서 기차 · 렌터카 없음</span>
+  </div>
+</header>
+
+<div class="intro">
+  <b>친퀘테레(Cinque Terre)</b>는 "다섯 개의 땅"이라는 뜻이에요. 리구리아 해안 절벽을 따라 남쪽부터
+  <b>리오마조레 → 마나롤라 → 코르닐리아 → 베르나차 → 몬테로소</b> 순으로 이어지고,
+  마을끼리는 <b>기차로 2~5분</b>이면 오갑니다. 차가 다닐 수 없는 구조라 기차·보트·도보가 전부예요.
+  아래는 각 마을의 모습과, 캐리어를 든 부모님 기준 접근성 정리입니다.
+</div>
+
+<!-- 1. Riomaggiore -->
+<div class="village">
+  <div class="v-photos">
+    <a href="https://upload.wikimedia.org/wikipedia/commons/7/76/Riomaggiore_From_Ferry_Cinque_Terre_Italy_Sep23_A7C_07414.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Riomaggiore_From_Ferry_Cinque_Terre_Italy_Sep23_A7C_07414.jpg/900px-Riomaggiore_From_Ferry_Cinque_Terre_Italy_Sep23_A7C_07414.jpg" loading="lazy" alt="배에서 본 리오마조레" onerror="this.closest('a').style.display='none'">
+    </a>
+    <a href="https://upload.wikimedia.org/wikipedia/commons/6/60/Panorama_delle_Cinque_terre_da_Riomaggiore.JPG" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Panorama_delle_Cinque_terre_da_Riomaggiore.JPG/900px-Panorama_delle_Cinque_terre_da_Riomaggiore.JPG" loading="lazy" alt="리오마조레 전경" onerror="this.closest('a').style.display='none'">
+    </a>
+  </div>
+  <div class="v-body">
+    <div class="v-head">
+      <h2>Riomaggiore</h2><span class="kr">리오마조레</span>
+      <span class="v-tag t-mid">캐리어 보통</span>
+    </div>
+    <p class="v-desc">
+      다섯 마을 중 가장 남쪽. 좁은 협곡을 따라 <b>진한 오렌지·황토색 집들이 층층이 쌓여</b> 있어
+      사진으로 가장 많이 알려진 마을이에요. 작은 항구와 방파제가 있고, 해질 무렵 풍경이 특히 유명합니다.
+      역과 마을이 <b>보행 터널로 약 200m</b>로 붙어 있지만, 마을 안쪽은 언덕과 계단이 있어요.
+    </p>
+    <div class="v-facts">
+      <div class="fact"><div class="l">역 → 마을</div><div class="v">터널 약 200m</div></div>
+      <div class="fact"><div class="l">지형</div><div class="v">협곡 · 경사 있음</div></div>
+      <div class="fact"><div class="l">분위기</div><div class="v">활기 · 일몰 명소</div></div>
+      <div class="fact"><div class="l">숙소</div><div class="v">부티크·게스트하우스 위주</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Manarola -->
+<div class="village">
+  <div class="v-photos">
+    <a href="https://upload.wikimedia.org/wikipedia/commons/a/a3/Manarola_NW_Cinque_Terre_Sep23_A7C_07237.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Manarola_NW_Cinque_Terre_Sep23_A7C_07237.jpg/900px-Manarola_NW_Cinque_Terre_Sep23_A7C_07237.jpg" loading="lazy" alt="마나롤라 해안 전경" onerror="this.closest('a').style.display='none'">
+    </a>
+    <a href="https://upload.wikimedia.org/wikipedia/commons/b/b6/Riomaggiore_-_View_of_Manarola_from_Via_Beccara_-_1.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Riomaggiore_-_View_of_Manarola_from_Via_Beccara_-_1.jpg/900px-Riomaggiore_-_View_of_Manarola_from_Via_Beccara_-_1.jpg" loading="lazy" alt="마나롤라 마을" onerror="this.closest('a').style.display='none'">
+    </a>
+  </div>
+  <div class="v-body">
+    <div class="v-head">
+      <h2>Manarola</h2><span class="kr">마나롤라</span>
+      <span class="v-tag t-easy">캐리어 수월</span>
+    </div>
+    <p class="v-desc">
+      <b>"엽서 사진" 1위</b>로 꼽히는 마을. 분홍·노랑 파스텔 집들이 절벽에 계단식으로 붙어 있고,
+      작은 어항에 어선이 정박해 있어요. 마을 북서쪽 해안 산책로에서 보는 전경이 가장 유명합니다.
+      역에서 마을까지 <b>평탄한 보행 터널</b>로 이어져 다섯 마을 중 캐리어 이동이 비교적 쉬운 편이에요.
+    </p>
+    <div class="v-facts">
+      <div class="fact"><div class="l">역 → 마을</div><div class="v">터널 약 100m (평탄)</div></div>
+      <div class="fact"><div class="l">지형</div><div class="v">절벽 계단식</div></div>
+      <div class="fact"><div class="l">분위기</div><div class="v">차분 · 포토 스팟</div></div>
+      <div class="fact"><div class="l">숙소</div><div class="v">3성 호텔 + 게스트하우스</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Corniglia -->
+<div class="village">
+  <div class="v-photos">
+    <a href="https://upload.wikimedia.org/wikipedia/commons/6/6c/East_Above_Corniglia_Cinque_Terre_Sep23_A7C_06797.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/East_Above_Corniglia_Cinque_Terre_Sep23_A7C_06797.jpg/900px-East_Above_Corniglia_Cinque_Terre_Sep23_A7C_06797.jpg" loading="lazy" alt="코르닐리아 전경" onerror="this.closest('a').style.display='none'">
+    </a>
+    <a href="https://upload.wikimedia.org/wikipedia/commons/b/b2/Corniglia_panorama.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Corniglia_panorama.jpg/900px-Corniglia_panorama.jpg" loading="lazy" alt="코르닐리아 파노라마" onerror="this.closest('a').style.display='none'">
+    </a>
+  </div>
+  <div class="v-body">
+    <div class="v-head">
+      <h2>Corniglia</h2><span class="kr">코르닐리아</span>
+      <span class="v-tag t-hard">캐리어 어려움</span>
+    </div>
+    <p class="v-desc">
+      다섯 마을 중 <b>유일하게 바다에 닿지 않은</b> 절벽 위 마을(해발 약 100m). 관광객이 적어 가장 조용하고
+      소박한 분위기예요. 다만 역에서 마을까지 <b>계단 약 383개(라르다리나)</b>를 오르거나 셔틀버스를 타야 해서,
+      캐리어를 든 부모님께는 부담이 큽니다. <b>숙박보다는 기차로 지나가며 보는 것</b>을 권해요.
+    </p>
+    <div class="v-facts">
+      <div class="fact"><div class="l">역 → 마을</div><div class="v">계단 383개 / 셔틀</div></div>
+      <div class="fact"><div class="l">지형</div><div class="v">절벽 위 (해발 100m)</div></div>
+      <div class="fact"><div class="l">분위기</div><div class="v">조용 · 한적</div></div>
+      <div class="fact"><div class="l">항구</div><div class="v">없음 (보트 정박 X)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Vernazza -->
+<div class="village">
+  <div class="v-photos">
+    <a href="https://upload.wikimedia.org/wikipedia/commons/f/fa/Vernazza_and_the_sea%2C_Cinque_Terre%2C_Italy.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Vernazza_and_the_sea%2C_Cinque_Terre%2C_Italy.jpg/900px-Vernazza_and_the_sea%2C_Cinque_Terre%2C_Italy.jpg" loading="lazy" alt="바다에서 본 베르나차" onerror="this.closest('a').style.display='none'">
+    </a>
+    <a href="https://upload.wikimedia.org/wikipedia/commons/9/98/San_Bernardino_Panorama_SE_Cinque_Terre_Sep23_A7C_06951-52_Pano.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/San_Bernardino_Panorama_SE_Cinque_Terre_Sep23_A7C_06951-52_Pano.jpg/900px-San_Bernardino_Panorama_SE_Cinque_Terre_Sep23_A7C_06951-52_Pano.jpg" loading="lazy" alt="베르나차 전경" onerror="this.closest('a').style.display='none'">
+    </a>
+  </div>
+  <div class="v-body">
+    <div class="v-head">
+      <h2>Vernazza</h2><span class="kr">베르나차</span>
+      <span class="v-tag t-mid">캐리어 보통</span>
+    </div>
+    <p class="v-desc">
+      다섯 마을 중 <b>유일한 천연 항구</b>를 가진 마을. 색색의 집들이 작은 항구와 광장(Piazza Marconi)을
+      감싸고 있어 <b>"가장 예쁜 마을"</b>로 자주 꼽혀요. 언덕 위 도리아 성터에서 내려다보는 전경이 압권이고,
+      항구 주변 노천 카페가 매력적입니다. 역에서 항구까지는 완만한 내리막 약 200m예요.
+    </p>
+    <div class="v-facts">
+      <div class="fact"><div class="l">역 → 마을</div><div class="v">완만한 내리막 200m</div></div>
+      <div class="fact"><div class="l">지형</div><div class="v">항구 중심 · 일부 경사</div></div>
+      <div class="fact"><div class="l">분위기</div><div class="v">아기자기 · 광장 카페</div></div>
+      <div class="fact"><div class="l">숙소</div><div class="v">호텔 1곳 + 부티크</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. Monterosso -->
+<div class="village">
+  <div class="v-photos">
+    <a href="https://upload.wikimedia.org/wikipedia/commons/4/45/Beach_monterosso.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Beach_monterosso.jpg/900px-Beach_monterosso.jpg" loading="lazy" alt="몬테로소 해변" onerror="this.closest('a').style.display='none'">
+    </a>
+    <a href="https://upload.wikimedia.org/wikipedia/commons/e/eb/Monterosso_al_Mare-_Il_Gigante_-_panoramio.jpg" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Monterosso_al_Mare-_Il_Gigante_-_panoramio.jpg/900px-Monterosso_al_Mare-_Il_Gigante_-_panoramio.jpg" loading="lazy" alt="몬테로소 해안" onerror="this.closest('a').style.display='none'">
+    </a>
+  </div>
+  <div class="v-body">
+    <div class="v-head">
+      <h2>Monterosso al Mare</h2><span class="kr">몬테로소</span>
+      <span class="v-tag t-easy">캐리어 가장 수월</span>
+    </div>
+    <p class="v-desc">
+      다섯 마을 중 <b>유일하게 넓은 모래 해변</b>이 있는, 가장 리조트다운 마을. 구시가지와 신시가지(Fegina)가
+      터널로 나뉘어 있고 <b>지형이 가장 평탄</b>해서 걷기 편해요. 식당·카페·상점도 가장 많아 편의성이 좋습니다.
+      정식 호텔이 다섯 마을 중 가장 많아 <b>베이스캠프로 삼기 좋은</b> 곳이에요.
+    </p>
+    <div class="v-facts">
+      <div class="fact"><div class="l">역 → 마을</div><div class="v">도보 5~10분 (평지)</div></div>
+      <div class="fact"><div class="l">지형</div><div class="v">평탄 · 해변</div></div>
+      <div class="fact"><div class="l">분위기</div><div class="v">리조트 · 편의시설 多</div></div>
+      <div class="fact"><div class="l">숙소</div><div class="v">정식 호텔 다수 (엘베 有)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 한눈 비교 -->
+<div class="sec">
+  <h2>📊 한눈에 비교 (부모님 기준)</h2>
+  <table>
+    <thead>
+      <tr><th>마을</th><th>역→마을</th><th>지형</th><th>정식 호텔</th><th>추천</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>몬테로소</b></td><td>도보 5~10분 (평지)</td><td>평탄</td><td>다수 (엘베)</td><td>숙박 최적</td></tr>
+      <tr><td><b>마나롤라</b></td><td>터널 100m (평탄)</td><td>절벽 계단식</td><td>3성 有</td><td>뷰+접근 균형</td></tr>
+      <tr><td><b>베르나차</b></td><td>내리막 200m</td><td>항구·일부 경사</td><td>1곳</td><td>풍경 최고</td></tr>
+      <tr><td><b>리오마조레</b></td><td>터널 200m</td><td>협곡 경사</td><td>부티크 위주</td><td>일몰·감성</td></tr>
+      <tr><td><b>코르닐리아</b></td><td>계단 383개 / 셔틀</td><td>절벽 위</td><td>거의 없음</td><td>기차로 통과</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 이동 -->
+<div class="sec">
+  <h2>🚆 이동 · 실전 정보</h2>
+  <ul>
+    <li><b>로마 → 친퀘테레</b>: 로마 테르미니 → 라스페치아(La Spezia Centrale) 직행 약 3.5~4시간 → 지역열차 환승 후 각 마을 20~25분. <b>총 4~4.5시간</b></li>
+    <li><b>마을 간 이동</b>: 친퀘테레 익스프레스 기차로 <b>2~5분</b>. 승강장이 낮아 캐리어는 들어 올려 타야 함</li>
+    <li><b>보트 추천</b> — 계단 없이 앉아서 마을 전경을 바다에서 감상. 9월 말까지 운항(코르닐리아는 항구 없어 미정차)</li>
+    <li><b>Cinque Terre Card</b>: 하이킹 안 하면 트레킹 카드 불필요. 기차 3회 이상이면 트레노 카드가 유리</li>
+    <li><b>9월 말 날씨</b>: 20~24도, 성수기보다 한산해 다니기 좋은 시기</li>
+    <li><b>짐</b>: 역에 엘리베이터 없는 곳이 많음 → 가벼운 소프트백 권장, 숙소에 짐 도움 여부 미리 문의</li>
+  </ul>
+  <div class="note">
+    <b>추천 방식:</b> 한 마을에 2박 <b>베이스캠프</b>를 두고, 나머지 마을은 기차·보트로 <b>당일 방문</b>.
+    캐리어는 첫날·마지막날만 옮기면 되어 부모님 체력 부담이 가장 적어요.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>🏨 숙소</h2>
+  <p style="font-size:13.5px;color:#4a5568;">
+    마을을 정한 뒤 숙소를 확정할 예정입니다. 후보와 상세 비교는 정해지는 대로 이 자리에 정리할게요.
+  </p>
+</div>
+
+<footer>
+  친퀘테레 5개 마을 · 2026.09.25~27 · 사진 © Wikimedia Commons (CC BY-SA)
+</footer>
+
+</div>
+</body>
+</html>
