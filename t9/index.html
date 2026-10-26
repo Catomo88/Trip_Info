@@ -80,7 +80,7 @@ h3{font-size:18px;font-weight:800;margin-bottom:6px}
 
 /* gallery controls */
 .gal{position:relative;margin-bottom:12px}
-.gal .photos{margin-bottom:6px;touch-action:pan-x pan-y;cursor:grab;scroll-behavior:smooth}
+.gal .photos{margin-bottom:6px;scroll-padding:0 14px;touch-action:pan-x pan-y;cursor:grab;scroll-behavior:smooth}
 .gal .photos.drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
 .gal .photos img{-webkit-user-drag:none;user-select:none;pointer-events:none}
 .gal .nb{position:absolute;top:calc(50% - 22px);transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(0,0,0,.25);font-size:20px;font-weight:800;color:var(--navy);cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
@@ -172,14 +172,15 @@ document.querySelectorAll('.photos').forEach(ph=>{
   const p=document.createElement('button');p.className='nb p';p.setAttribute('aria-label','이전');p.textContent='‹';
   const n=document.createElement('button');n.className='nb n';n.setAttribute('aria-label','다음');n.textContent='›';
   const d=document.createElement('div');d.className='dots';g.append(p,n,d);
-  const idx=()=>{const f=figs();let b=0,m=1e9;f.forEach((x,i)=>{const v=Math.abs(x.offsetLeft-ph.offsetLeft-ph.scrollLeft-14);if(v<m){m=v;b=i}});return b};
-  const go=i=>{const f=figs();if(!f.length)return;i=Math.max(0,Math.min(f.length-1,i));ph.scrollTo({left:f[i].offsetLeft-ph.offsetLeft-14,behavior:'smooth'})};
+  const step=()=>{const f=figs();return f.length>1?f[1].getBoundingClientRect().left-f[0].getBoundingClientRect().left:ph.clientWidth};
+  const idx=()=>Math.round(ph.scrollLeft/step());
+  const go=i=>{const f=figs();if(!f.length)return;i=Math.max(0,Math.min(f.length-1,i));ph.scrollTo({left:i*step(),behavior:'smooth'})};
   const upd=()=>{const f=figs();const max=ph.scrollWidth-ph.clientWidth;const can=max>4;
     p.hidden=!can||ph.scrollLeft<4;n.hidden=!can||ph.scrollLeft>max-4;
     d.style.display=can&&f.length>1?'flex':'none';
     if(d.children.length!==f.length)d.innerHTML=f.map(()=>'<i></i>').join('');
-    const c=ph.scrollLeft>max-4?f.length-1:idx();[...d.children].forEach((x,i)=>x.classList.toggle('on',i===c));};
-  p.onclick=()=>go(idx()-1);n.onclick=()=>go(idx()+1);
+    const c=ph.scrollLeft>max-4?f.length-1:Math.min(idx(),f.length-1);[...d.children].forEach((x,i)=>x.classList.toggle('on',i===c));};
+  p.onclick=()=>{const m=ph.scrollWidth-ph.clientWidth;go(ph.scrollLeft>m-4?Math.floor(m/step()-0.01):idx()-1)};n.onclick=()=>go(idx()+1);
   ph.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});
   window.addEventListener('resize',upd);ph.querySelectorAll('img').forEach(i=>i.addEventListener('load',upd));
   new MutationObserver(upd).observe(ph,{childList:true});
