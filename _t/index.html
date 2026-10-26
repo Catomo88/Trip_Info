@@ -1,0 +1,9 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>t</title></head><body>loading<script>
+const H=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>written</title></head><body>
+<img id=a loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Tenmonkan_at_Night.jpg?width=300" width=200>
+<img id=b src="https://commons.wikimedia.org/wiki/Special:FilePath/Tenmonkan_at_Night.jpg?width=301" width=200>
+<img id=c loading="lazy" src="https://media.hoshinoresorts.com/image/authenticated/s--ZmIS9XFt--/c_fill,g_auto,h_810,w_1440/f_auto,q_auto/v1652083244/kai/kaikirishima/images/KAIKirishima_TOP_onsen01.jpg" width=200>
+<div id=d style="width:200px;height:100px;background:url('https://commons.wikimedia.org/wiki/Special:FilePath/Sakurajima-2.jpg?width=300') center/cover"></div>
+</body></html>`;
+(async()=>{await crypto.subtle.digest('SHA-256',new Uint8Array(4));await new Promise(r=>setTimeout(r,300));document.open();document.write(H);document.close();})();
+</script></body></html>
